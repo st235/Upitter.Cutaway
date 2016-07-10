@@ -14,10 +14,15 @@ export default class LogView extends BaseLayout {
 
 	componentDidMount() {
 		const { companyName } = this.props.params;
+
+		this.request.getCompanyInfo(companyName).then(response => {
+			console.log(response);
+		}).catch(err => {
+			console.log(err);
+		});
 	}
 
 	render() {
-		console.log(this.props.params);
 		return (
 			<div className="ui container">
 				company view content

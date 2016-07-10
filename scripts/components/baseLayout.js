@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import AjaxService from '../services/ajaxServiceWithLoading';
 import StoreService from '../services/storeService';
 import LocalStorageService from '../services/localStorageService';
+
+import apiUtils from '../utils/apiUtils';
 
 export default class BaseLayout extends Component {
 	constructor(props) {
@@ -19,6 +20,6 @@ export default class BaseLayout extends Component {
 	}
 
 	get request() {
-		return AjaxService;
+		return apiUtils;
 	}
 }

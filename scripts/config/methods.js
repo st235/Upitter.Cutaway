@@ -5,6 +5,6 @@ import httpConfig from './http';
 export default {
 	company: {
 		getSubscribers: `${httpConfig.UPITTER_SERVER}/company/subscribers`,
-		findByAlias: `${httpConfig.UPITTER_SERVER}/company/:aliasId`
+		findByAlias: `${httpConfig.UPITTER_SERVER}/company/`
 	}
 };
