@@ -1,8 +1,13 @@
 import React from 'react';
 
 import BaseLayout from '../../components/baseLayout';
+import CompanyInfo from '../../components/companyInfoComponent';
 
 import { EDIT_COMPANY_INFO } from '../../actions/companyActions';
+
+import errorTypesConfig from '../../config/errorTypes';
+
+import ErrorService from '../../services/errorService';
 
 export default class LogView extends BaseLayout {
 	constructor(props) {
@@ -18,16 +23,18 @@ export default class LogView extends BaseLayout {
 		const { companyName } = this.props.params;
 
 		this.request.getCompanyInfo(companyName).then(response => {
-			console.log(response);
+			console.log('Response: ', response);
 		}).catch(err => {
-			console.log(err);
+			if (err) ErrorService.setError(errorTypesConfig.GET_COMPANY_INFO_ERROR, ErrorService.generateStandardError('ru'));
 		});
 	}
 
 	render() {
+		const { company } = this.store.getState();
+
 		return (
 			<div className="ui container">
-				company view content
+				<CompanyInfo company={ company } />
 			</div>
 		);
 	}

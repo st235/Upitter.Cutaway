@@ -1,6 +1,6 @@
 'use strict';
 
-import StoreService from 'storeService';
+import StoreService from './storeService';
 
 import { ADD_ERROR, REMOVE_ERROR } from '../actions/errorActions';
 
