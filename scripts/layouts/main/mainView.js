@@ -14,7 +14,7 @@ export default class AuthorizationView extends BaseLayout {
 
 	render() {
 		return (
-			<div className="ui middle aligned center aligned grid">
+			<div>
 				Main view content!
 			</div>
 		);

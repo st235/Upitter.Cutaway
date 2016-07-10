@@ -8,7 +8,7 @@ module.exports = dir => {
 	return {
 		title: 'Upitter VisitCard',
 		cache: true,
-		host: 'http://127.0.0.1:8001',
+		host: 'http://127.0.0.1:8000',
 		template: templatePath,
 		inject: false
 	};

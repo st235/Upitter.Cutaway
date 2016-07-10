@@ -12,7 +12,12 @@ export default class LogView extends BaseLayout {
 		this.render = this.render.bind(this);
 	}
 
+	componentDidMount() {
+		const { companyName } = this.props.params;
+	}
+
 	render() {
+		console.log(this.props.params);
 		return (
 			<div className="ui container">
 				company view content

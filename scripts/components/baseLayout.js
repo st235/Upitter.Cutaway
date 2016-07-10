@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import AjaxService from '../services/ajaxService';
+import AjaxService from '../services/ajaxServiceWithLoading';
 import StoreService from '../services/storeService';
 import LocalStorageService from '../services/localStorageService';
 

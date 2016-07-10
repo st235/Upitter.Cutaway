@@ -1,7 +1,6 @@
-const TOGGLE_LOADING = showLoading => {
+const TOGGLE_LOADING = () => {
 	return {
-		type: 'TOGGLE_LOADING',
-		showLoading
+		type: 'TOGGLE_LOADING'
 	};
 };
 
