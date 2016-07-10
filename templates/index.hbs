@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ htmlWebpackPlugin.options.title }}</title>
+    <link rel="stylesheet" href="{{htmlWebpackPlugin.options.host}}/application.css">
+    <style type="text/css">
+        #application {
+            height: 100%;
+        }
+
+        #login_column {
+            max-width: 450px;
+        }
+
+        .grid {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="application"></div>
+    <script type="text/javascript" src="{{htmlWebpackPlugin.options.host}}/application.js"></script>
+</body>
+</html>
