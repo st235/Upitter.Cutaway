@@ -2,6 +2,8 @@ import React from 'react';
 
 import BaseLayout from '../../components/baseLayout';
 
+import { EDIT_COMPANY_INFO } from '../../actions/companyActions';
+
 export default class LogView extends BaseLayout {
 	constructor(props) {
 		super(props);
