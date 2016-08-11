@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const ncp = require('ncp').ncp;
 
 const webpackScripts = require('./config/scripts')(__dirname);
+const WebpackDevServer = require('webpack-dev-server');
 
 const imageOriginFolder = path.join(__dirname, 'images');
 const stylesOriginFolder = path.join(__dirname, 'styles');
@@ -15,6 +16,19 @@ const themesOriginFolder = path.join(__dirname, 'themes');
 const imageDestinationFolder = path.join(__dirname, 'dist/images');
 const stylesDestinationFolder = path.join(__dirname, 'dist');
 const themesDestinationFolder = path.join(__dirname, 'dist');
+
+
+gulp.task('DEV_SERVER', () => {
+	const compiler = webpack(webpackScripts);
+
+	new WebpackDevServer(compiler, {
+		contentBase: './dist',
+		historyApiFallback: true
+	}).listen(8000, 'localhost', error => {
+		if (error) throw new gulpUtils.PluginError('webpack-dev-server', error);
+		gulpUtils.log('[webpack-dev-server]', 'localhost:8000');
+	});
+});
 
 gulp.task('Build_Scripts', callback => {
 	webpack(webpackScripts, (error, status) => {

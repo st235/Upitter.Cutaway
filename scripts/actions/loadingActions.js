@@ -1,6 +1,7 @@
-const TOGGLE_LOADING = () => {
+const TOGGLE_LOADING = (identifier) => {
 	return {
-		type: 'TOGGLE_LOADING'
+		type: 'TOGGLE_LOADING',
+		identifier
 	};
 };
 
