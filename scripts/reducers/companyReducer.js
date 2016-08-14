@@ -2,10 +2,10 @@
 
 const CompanyReducer = (state = {}, action) => {
 	switch (action.type) {
-		case 'EDIT_COMPANY_INFO':
-			return Object.assign({}, state, action.info);
-		default:
-			return state;
+	case 'ADD_COMPANY':
+		return Object.assign({}, state, action.company);
+	default:
+		return state;
 	}
 };
 

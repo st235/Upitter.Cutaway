@@ -3,7 +3,7 @@ import React from 'react';
 import BaseLayout from '../../components/baseLayout';
 import CompanyInfo from '../../components/companyInfoComponent';
 
-import { EDIT_COMPANY_INFO } from '../../actions/companyActions';
+import { ADD_COMPANY } from '../../actions/companyActions';
 
 import errorTypesConfig from '../../config/errorTypes';
 

@@ -1,9 +1,9 @@
-const EDIT_COMPANY_INFO = (info) => {
+const ADD_COMPANY = company => {
 	return {
-		type: 'EDIT_COMPANY_INFO',
-		info
+		type: 'ADD_COMPANY',
+		company
 	};
 };
 
-export { EDIT_COMPANY_INFO };
-export default { EDIT_COMPANY_INFO };
+export { ADD_COMPANY };
+export default { ADD_COMPANY };

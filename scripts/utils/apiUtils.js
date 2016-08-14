@@ -6,6 +6,6 @@ import methodsConfig from '../config/methods';
 
 export default {
 	getCompanyInfo(companyName) {
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}${companyName}`, {});
+		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}${companyName}`, {}, 'ADD_COMPANY');
 	}
 }
