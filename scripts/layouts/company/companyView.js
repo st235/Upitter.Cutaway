@@ -3,8 +3,8 @@ import React from 'react';
 import BaseLayout from '../../components/baseLayout/baseLayout';
 import Header from '../../components/header/headerComponent';
 import CompanyMain from '../../components/companyMain/companyMainComponent';
-import Aside from '../../components/aside/asideComponent';
-import Tape from '../../components/tape/tapeComponent';
+import Aside from '../../components/companyMain/aside/asideComponent';
+import Tape from '../../components/companyMain/tape/tapeComponent';
 import Footer from '../../components/footer/footerComponent';
 
 import { ADD_COMPANY } from '../../actions/companyActions';

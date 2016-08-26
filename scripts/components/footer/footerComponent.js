@@ -5,7 +5,7 @@ import BaseLayout from '../baseLayout/baseLayout';
 
 class FooterComponent extends BaseLayout {
 	render() {
-		return <footer className="footer"></footer>;
+		return <footer className="footer" />;
 	}
 }
 
