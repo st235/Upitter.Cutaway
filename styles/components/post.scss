@@ -1,0 +1,164 @@
+.content-header {
+    margin: -30px -30px 30px -30px;
+    padding: 0 30px;
+    border-bottom: 1px solid #eff1f4;
+}
+.content-header_item {
+    display: inline-block;
+    padding: 30px 0; 
+    color: #8594a2;
+    span {
+        font-weight: 700;
+        color: #5f6f7d;
+    }
+}
+
+
+.post {
+    border-bottom: 1px solid #eff1f4;
+    margin-bottom: 30px;
+}
+.card {
+    .post  {
+        margin: 0 -30px 30px;
+        padding: 0 30px 30px;
+        &:last-child {
+            margin-bottom: 0;
+            border: 0;
+            margin-bottom: -30px;
+        }
+    }
+}
+.post-header {
+    position: relative;
+    margin-bottom: 10px;
+
+    .context-menu {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -15px;
+    }
+}
+
+.post-company {
+    position: relative;
+    padding-left: 50px;
+}
+.post-company_ava {
+    img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        border-radius: 5px;
+    } 
+}
+.post-company_info {
+    padding: 2px 0;
+    .post-name {
+        font-size: .9rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    .post-other {
+        color: #8594a2;
+	    font-size: 0.8rem;
+    }
+}
+
+.post-content_title {
+    font-size: 1.65rem;
+    font-weight: 300;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    color: #15212d;
+}
+.post-content_text {
+    font-size: .95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+.post-content_images {
+    margin-bottom: 15px;
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+.category {
+    position: relative;
+    display: inline-block;
+    padding-left: 37px;
+    .category_icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .category_name {
+        padding: 6px 0;
+    }
+}
+.category_icon {}
+.category_name {
+    font-size: .8rem;
+    font-weight: 700;
+    color: #0a5198;
+}
+
+.post-footer {
+    margin-bottom: -15px;
+    @include clearfix();
+    .category {
+        width: 40%;
+        float: left;
+    }
+    .post-menu {
+        width: 60%;
+        float: left;
+    }
+}
+
+.post-menu_item {
+    display: inline-block;
+    float: left;
+    width: 33.3334%;
+    text-align: right;
+    
+}
+.action-btn {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: -4px 0;
+    border-radius: 50px;
+    cursor: pointer;
+
+    .action-icon {
+        vertical-align: middle;
+    }
+    .counter {
+        display: inline-block;
+        vertical-align: middle;
+        color: #6c8bb6;
+        font-size: .8rem;
+        font-weight: 700;
+    }
+    &:hover {
+        background: #eff1f4;
+        .counter {
+            color: #ff6064;
+        }
+        .action-icon {
+            &.action-icon--comment {
+                background-position: 0 -27px;
+            }
+            &.action-icon--favorit {
+                background-position: -27px -27px;
+            }
+            &.action-icon--like {
+                background-position: -54px -27px;
+            }
+        }
+    }
+}

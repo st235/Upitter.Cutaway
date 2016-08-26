@@ -1,0 +1,120 @@
+.profile {
+    text-align: center;
+}
+
+.profile-header {
+    position: relative;
+    margin: -30px -30px 0 -30px;
+}
+.profile-header_bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 145px;
+    background-size: cover;
+    border-radius: 5px 5px 0 0;
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,.4);
+    }
+}
+.profile-header_ava {
+    position: relative;
+    z-index: 10;
+    img {
+        margin: 60px 0 0;
+        width: 170px;
+        border-radius: 8px;
+        border: 3px solid #fff;
+    }
+}
+
+.profile-name {
+    font-size: 1.65rem;
+    padding: 10px 0;
+    margin-bottom: 5px;
+    color: #15212d;
+}
+
+.profile-follow {
+    margin-bottom: 15px;
+}
+
+.profile-descript {
+    font-size: .8rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.profile-contacts {
+    margin-bottom: 10px;
+}
+.profile-contacts_tel {
+    margin-bottom: 10px;
+    span {
+        display: inline-block;
+        margin-left: 10px;
+        margin-bottom: 2px;
+
+        &:first-child,
+        &:nth-child(2n+1) {
+            margin-left: 0;
+        }
+    }
+}
+.profile-contacts_site {
+    margin-bottom: 10px;
+}
+.profile-contacts_social {
+    .social-icon {
+        cursor: pointer;
+        margin-left: 5px;
+        margin-bottom: 5px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
+
+.profile-map {
+    margin-bottom: 15px;
+}
+
+.profile-tags {
+    text-align: left;
+}
+.profile-tags_title {
+    font-size: .8rem;
+    color: #8594a2;
+    margin-bottom: 10px;
+}
+.profile-tags_wrapper {
+    @include clearfix();
+    
+    .tag {
+        display: inline-block;
+        float: left;
+        margin: 0 2px 4px 0;
+        font-size: .75rem;
+        padding: 4px 10px;
+        border-radius: 50px;
+        cursor: pointer;
+        border: 2px solid #eff1f4;
+        background: #eff1f4;
+        color: #0a5198;
+        &:last-child {
+            margin: 0 0 4px 0;
+        }
+        &:hover {
+            color: #ff6064;
+            background: #fff;
+            border-color: #ff6064;
+        }
+    }
+}

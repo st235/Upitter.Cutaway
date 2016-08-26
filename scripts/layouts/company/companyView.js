@@ -1,7 +1,11 @@
 import React from 'react';
 
-import BaseLayout from '../../components/baseLayout';
-import CompanyInfo from '../../components/companyInfoComponent';
+import BaseLayout from '../../components/baseLayout/baseLayout';
+import Header from '../../components/header/headerComponent';
+import CompanyMain from '../../components/companyMain/companyMainComponent';
+import Aside from '../../components/aside/asideComponent';
+import Tape from '../../components/tape/tapeComponent';
+import Footer from '../../components/footer/footerComponent';
 
 import { ADD_COMPANY } from '../../actions/companyActions';
 
@@ -10,19 +14,10 @@ import errorTypesConfig from '../../config/errorTypes';
 import ErrorService from '../../services/errorService';
 
 export default class LogView extends BaseLayout {
-	constructor(props) {
-		super(props);
-		this.bind();
-	}
-
-	bind() {
-		this.render = this.render.bind(this);
-	}
-
 	componentDidMount() {
-		const { companyName } = this.props.params;
+		const { alias } = this.props.params;
 
-		this.request.getCompanyInfo(companyName).then(response => {
+		this.request.getCompanyInfo(alias).then(response => {
 			console.log('Response: ', response);
 		}).catch(err => {
 			if (err) ErrorService.setError(errorTypesConfig.GET_COMPANY_INFO_ERROR, ErrorService.generateStandardError('ru'));
@@ -33,8 +28,13 @@ export default class LogView extends BaseLayout {
 		const { company } = this.store.getState();
 
 		return (
-			<div className="ui container">
-				<CompanyInfo company={ company } />
+			<div>
+				<Header />
+				<CompanyMain>
+					<Aside />
+					<Tape />
+				</CompanyMain>
+				<Footer />
 			</div>
 		);
 	}

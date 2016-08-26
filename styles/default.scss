@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+    background: #eff1f4;
+    color: #384757;
+    min-width: 1020px;
+}
+
+a {
+    color: #0a5198;
+    text-decoration: none;
+    &:hover {
+        color: #ff6064;
+    }
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    @include clearfix();
+}
+
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;
+}

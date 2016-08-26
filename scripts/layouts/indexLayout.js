@@ -1,17 +1,9 @@
 import React from 'react';
 
-import BaseLayout from '../components/baseLayout';
-import Loading from '../components/loadingComponent';
+import BaseLayout from '../components/baseLayout/baseLayout';
+import Loading from '../components/loading/loadingComponent';
 
 export default class IndexLayout extends BaseLayout {
-	constructor(props) {
-		super(props);
-	}
-
-	bind() {
-		this.render = this.render.bind(this);
-	}
-
 	render() {
 		const { children } = this.props;
 		const { loading } = this.store.getState();

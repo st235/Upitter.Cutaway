@@ -1,0 +1,108 @@
+.btn {
+    display: inline-block;
+    border: 2px solid #eff1f4;
+    background: #eff1f4;
+    color: #0a5198;
+    border-radius: 50px;
+    padding: 8px 15px;
+    font-size: .875rem;
+    cursor: pointer;
+    outline: none;
+
+    &.btn--icon-map {
+        position: relative;
+        padding-left: 35px;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 2px;
+            width: 28px;
+            height: 28px;
+            background-image: url('../images/icons/app_ic.png');
+            background-size: 140px 54px;
+            background-position: -84px 0;
+        }
+        &:hover {
+            &:before {
+                background-position-y: -27px;
+            }
+        }
+    }
+
+    &.btn--counter {
+        span {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #eff1f4;
+            border-radius: 50px;
+            font-weight: 700;
+            margin: -4px -10px -4px 4px;
+        }
+    }
+
+    &.btn--line {
+        background: transparent;
+    }
+
+    &:hover {
+        background: #ff6064;
+        border-color: #ff6064;
+        color: #fff;
+        &.btn--line {
+            background: transparent;
+            color: #ff6064;
+        }
+    }
+
+    &.btn--success {
+        color: #fff;
+        background: #54c771;
+        border-color: #54c771;
+        &.btn--line {
+            background: transparent;
+            color: #54c771;
+        }
+        &.btn--counter {
+            span {
+                color: #fff;
+                background: #54c771;
+            }
+        }
+        &.btn--active {
+            color: #8594a2;
+            border-color: #eff1f4;
+            &.btn--counter {
+                span {
+                    color: #8594a2;
+                    background: #eff1f4;
+                }
+            }
+        }
+
+        &:hover {
+            background: #3fb75d;
+            border-color: #3fb75d;
+            &.btn--line {
+                background: transparent;
+                color: #3fb75d;
+            }
+            &.btn--counter {
+                span {
+                    color: #fff;
+                    background: #3fb75d;
+                }
+            }
+            &.btn--active {
+                color: #ff6064;
+                border-color: #ff6064;
+                &.btn--counter {
+                    span {
+                        color: #fff;
+                        background: #ff6064;
+                    }
+                }
+            }
+        }
+    }
+}

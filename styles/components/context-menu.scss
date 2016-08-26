@@ -1,0 +1,81 @@
+.context-menu {
+    position: relative;
+}
+.context-menu_btn {
+    position: relative;
+    width: 30px;
+	height: 30px;
+    cursor: pointer;
+    span {
+        position: relative;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -2px 0 0 -2px;
+        width: 4px;
+        height: 4px;
+        background: #eff1f4;
+        border-radius: 10px;
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: #eff1f4;
+            border-radius: 10px;
+        }
+        &:after {
+            left: 8px;
+        }
+        &:before {
+            left: -8px;
+        }
+    }
+    &:hover {
+        span {
+            background: #0a5198;
+            &:after,
+            &:before {
+                background: #0a5198;
+            }
+        }
+    }
+    &.context-menu_btn--active {
+        span {
+            background: #ff6064;
+            &:after,
+            &:before {
+                background: #ff6064;
+            }
+        }
+    }
+}
+.context-menu_items {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background: #fff;
+    box-shadow: 0 5px 30px rgba(0,0,0,.12);
+    padding: 10px 0;
+    border-radius: 5px;
+    ul {
+        margin: 0;
+        padding: 0;
+        li {
+            list-style: none;
+            a {
+                display: block;
+                padding: 10px 20px;
+                min-width: 200px;
+                &:hover {
+                    background: #eff1f4;
+                }
+            }
+        }
+    }
+}
