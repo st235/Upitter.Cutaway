@@ -4,6 +4,7 @@ import { Router, browserHistory } from 'react-router';
 import RoutesConfig from '../config/routes';
 
 import StoreService from './storeService';
+import LocaleService from './localeService';
 
 import LocalStorageService from './localStorageService';
 
@@ -18,6 +19,8 @@ export default class ApplicationService {
 	init() {
 		StoreService.init(this.render);
 		LocalStorageService.init();
+		LocaleService.init();
+
 		this.render();
 	}
 

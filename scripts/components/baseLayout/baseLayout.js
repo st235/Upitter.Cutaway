@@ -3,6 +3,8 @@ import moment from 'moment';
 
 import StoreService from '../../services/storeService';
 import LocalStorageService from '../../services/localStorageService';
+import ErrorService from '../../services/errorService';
+import LocaleService from '../../services/localeService'
 
 import ApiUtils from '../../utils/apiUtils';
 
@@ -36,5 +38,13 @@ export default class BaseLayout extends Component {
 
 	get moment() {
 		return moment;
+	}
+
+	get errorService() {
+		return ErrorService;
+	}
+
+	get localeService() {
+		return LocaleService;
 	}
 }

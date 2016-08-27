@@ -32,5 +32,3 @@ class ProfileContent extends BaseLayout {
 }
 
 export default ProfileContent;
-
-

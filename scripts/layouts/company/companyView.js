@@ -18,6 +18,7 @@ export default class LogView extends BaseLayout {
 		const { alias } = this.props.params;
 
 		this.request.getCompanyInfo(alias).then(response => {
+			if (response && response.success)
 			console.log('Response: ', response);
 		}).catch(err => {
 			if (err) ErrorService.setError(errorTypesConfig.GET_COMPANY_INFO_ERROR, ErrorService.generateStandardError('ru'));

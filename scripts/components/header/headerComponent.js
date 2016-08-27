@@ -10,7 +10,7 @@ import HeaderLoginButton from './headerLoginButton/headerLoginButtonComponent';
 
 class HeaderComponent extends BaseLayout {
 	onBind() {
-		
+
 	}
 
 	onCreate() {
