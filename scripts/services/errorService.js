@@ -22,16 +22,22 @@ export default class ErrorService {
 	}
 
 	static generateStandardError() {
-		const message = this._getLocalizedErrorMessage(errorTypesConfig.UNKNOWN_ERROR);
-		this.setError(errorTypesConfig.UNKNOWN_ERROR, message);
+		this.setError(errorTypesConfig.UNKNOWN_ERROR);
 	}
-	static setError(errorType, errorMessage) {
-		const isSetErrorMessage = StoreService.getStore().error.get(errorType);
+
+	static getError() {
+		return StoreService.getStore().getState().error.get('currentError');
+	}
+
+	static setError(errorType) {
+		const isSetErrorMessage = StoreService.getStore().getState().error.get(errorType);
+		const message = this._getLocalizedErrorMessage(errorType);
 		if (isSetErrorMessage) {
 			clearTimeout(this.timeout);
 		}
-		this._dispatchError(errorType, errorMessage);
+		this._dispatchError(errorType, message);
 	}
+
 	static removeError(errorType) {
 		StoreService.getStore().dispatch(REMOVE_ERROR(errorType));
 	}

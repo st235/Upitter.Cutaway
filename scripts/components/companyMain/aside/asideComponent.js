@@ -6,13 +6,18 @@ import BaseLayout from '../../baseLayout/baseLayout';
 import ProfileHeader from './profileHeader/profileHeaderComponent';
 import ProfileContent from './profileContent/profileContentComponent';
 
+import { ADD_COMPANY } from '../../../actions/companyActions';
+
+import ErrorService from '../../../services/errorService';
+
 class AsideComponent extends BaseLayout {
-	onBind() {
+	componentDidMount() {
+		const { alias } = this.props;
 
-	}
-
-	onCreate() {
-
+		this.request.getCompanyInfo(alias).then(result => {
+			if (result && result.success && result.response) return this.store.dispatch(ADD_COMPANY(result.response));
+			ErrorService.generateStandardError();
+		});
 	}
 
 	render() {
@@ -26,5 +31,3 @@ class AsideComponent extends BaseLayout {
 }
 
 export default AsideComponent;
-
-

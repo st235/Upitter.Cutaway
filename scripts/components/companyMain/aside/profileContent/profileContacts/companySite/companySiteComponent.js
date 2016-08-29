@@ -13,8 +13,10 @@ class SiteComponent extends BaseLayout {
 	}
 
 	render() {
+		const { company } = this.store.getState();
+		
 		return (
-			<div className="profile-name">Roundplace</div>
+			<div className="profile-name">{ company.name }</div>
 		);
 	}
 }

@@ -31,6 +31,11 @@ export default {
 		en: 'Unable to rate publication'
 	},
 
+	[errorTypesConfig.COMMENT_ERROR]: {
+		ru: 'Не удалось оставить комментарий',
+		en: 'Unable to post a comment'
+	},
+
 	[errorTypesConfig.UNABLE_TO_AUTHORIZE]: {
 		ru: 'Не удалось авторизоваться',
 		en: 'Unable to authorize'

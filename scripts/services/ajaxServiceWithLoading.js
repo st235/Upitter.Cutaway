@@ -2,6 +2,7 @@
 
 import AjaxService from './ajaxService';
 import StoreService from './storeService';
+import ErrorService from './errorService';
 
 import { TOGGLE_LOADING } from '../actions/loadingActions';
 
@@ -11,9 +12,9 @@ class AjaxServiceWithLoading extends AjaxService {
 		return super.sendPost(url, body).then(result => {
 			this._toggleLoading(loadingIdentifier);
 			return result;
-		}).catch(err => {
+		}).catch(() => {
 			this._toggleLoading(loadingIdentifier);
-			throw err;
+			ErrorService.generateStandardError();
 		});
 	}
 
@@ -22,9 +23,9 @@ class AjaxServiceWithLoading extends AjaxService {
 		return super.sendGet(url, query).then(result => {
 			this._toggleLoading(loadingIdentifier);
 			return result;
-		}).catch(err => {
+		}).catch(() => {
 			this._toggleLoading(loadingIdentifier);
-			throw err;
+			ErrorService.generateStandardError();
 		});
 	}
 

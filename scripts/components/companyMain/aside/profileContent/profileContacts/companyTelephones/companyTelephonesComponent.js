@@ -1,22 +1,28 @@
 'use strict';
 
 import React from 'react';
+import _ from 'underscore';
+
 import BaseLayout from '../../../../../baseLayout/baseLayout';
 
 class CompanyTelephonesComponent extends BaseLayout {
 	onBind() {
-
+		this.generateCompanyPhones = this.generateCompanyPhones.bind(this);
 	}
 
-	onCreate() {
+	generateCompanyPhones() {
+		const { company } = this.store.getState();
+		const telephones = company.contactPhones;
 
+		if (!telephones || !telephones.length) return null;
+
+		return _.map(telephones, (telephone, index) => <span key={ index }>{ telephone }</span>);
 	}
 
 	render() {
 		return (
 			<div className="profile-contacts_tel">
-				<span>+7 (999) 888 33 77</span>
-				<span>+7 (999) 888 33 78</span>
+				{ this.generateCompanyPhones() }
 			</div>
 		);
 	}

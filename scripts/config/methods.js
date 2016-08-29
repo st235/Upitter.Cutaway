@@ -24,5 +24,11 @@ export default {
 		addComment: `${baseServerUrl}/comment/create`,
 		editComment: `${baseServerUrl}/comment/edit`,
 		removeComment: `${baseServerUrl}/comment/remove`
+	},
+
+	category: {
+		obtain: '/categories',
+		find: '/categories/find/:id',
+		getParent: '/categories/get/parent/:id'
 	}
 };

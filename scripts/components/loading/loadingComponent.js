@@ -9,18 +9,22 @@ class LoadingComponent extends BaseLayout {
 
 		if (shouldBeShown) {
 			return (
-				<div className="ui active dimmer">
-					<div className="ui indeterminate text loader"> Preparing  Information</div>
+				<div className="notify-fixed-wrapper">
+					<div className="container">
+						<div className="notify-toast preloader">
+							Загрузка...
+						</div>
+					</div>
 				</div>
 			);
 		}
 
-		return <div />;
+		return null;
 	}
 }
 
-LoadingComponent.propTypes = {
-	shouldBeShown: React.PropTypes.bool
-};
+// LoadingComponent.propTypes = {
+// 	shouldBeShown: React.PropTypes.bool
+// };
 
 export default LoadingComponent;
