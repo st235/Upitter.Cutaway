@@ -13,9 +13,11 @@ class PostsNumberComponent extends BaseLayout {
 	}
 
 	render() {
+		let count = this.props.count || 0;
+
 		return (
 			<div className="content-header">
-				<div className="content-header_item">Всего постов <span>42</span></div>
+				<div className="content-header_item">Всего постов <span>{ count }</span></div>
 			</div>
 		);
 	}

@@ -1,15 +1,20 @@
 'use strict';
 
 import React from 'react';
+import _ from 'underscore';
+
 import BaseLayout from '../../../../baseLayout/baseLayout';
 
 class ActivityListComponent extends BaseLayout {
 	onBind() {
-
+		this.generateCategoriesList = this.generateCategoriesList.bind(this);
 	}
 
-	onCreate() {
+	generateCategoriesList() {
+		const { company } = this.store.getState();
+		if (!company || !company.activity) return null;
 
+		return _.map(company.activity, activity => <div key={ parseInt(activity.customId) } className="tag">{ activity.title }</div>);
 	}
 
 	render() {
@@ -17,11 +22,7 @@ class ActivityListComponent extends BaseLayout {
 			<div className="profile-tags">
 				<div className="profile-tags_title">Деятельность</div>
 				<div className="profile-tags_wrapper">
-					<div className="tag">Одежда</div>
-					<div className="tag">Магазин одежды</div>
-					<div className="tag">Магазин детской одежды</div>
-					<div className="tag">Магазин спортивной одежды</div>
-					<div className="tag">Спортивный магазин</div>
+					{ this.generateCategoriesList() }
 				</div>
 			</div>
 		);

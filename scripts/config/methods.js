@@ -13,11 +13,9 @@ export default {
 	},
 
 	post: {
-		obtain: `${baseServerUrl}/post/obtain`,
-		obtainNew: `${baseServerUrl}/post/obtainNew`,
-		obtainOld: `${baseServerUrl}/post/obtainOld`,
 		like: `${baseServerUrl}/post/like/:postId`,
-		favorite: `${baseServerUrl}/post/favorite/:postId`
+		favorite: `${baseServerUrl}/post/favorite/:postId`,
+		obtainByAlias: `${baseServerUrl}/post/obtainByAlias`
 	},
 
 	comment: {
@@ -27,8 +25,6 @@ export default {
 	},
 
 	category: {
-		obtain: '/categories',
-		find: '/categories/find/:id',
-		getParent: '/categories/get/parent/:id'
+		obtainTitles: `${baseServerUrl}/categories/obtainTitles`
 	}
 };

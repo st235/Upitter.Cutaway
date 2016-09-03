@@ -2,6 +2,8 @@
 
 import LocalStorageService from './localStorageService';
 
+import localeConfig from '../config/locale';
+
 export default class LocaleService {
 	static init(language) {
 		if (language) return this.setLocale(language);
@@ -18,5 +20,10 @@ export default class LocaleService {
 
 	static getLocale() {
 		return LocalStorageService.get('ln');
+	}
+
+	static getLocalizedNameFor(propertyName) {
+		const locale = this.getLocale() || 'ru';
+		return localeConfig[propertyName][locale];
 	}
 }

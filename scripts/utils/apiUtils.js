@@ -14,6 +14,20 @@ export default {
 		});
 	},
 
+	getCategoryNames(activity) {
+		return AjaxService.sendPost(`${methodsConfig.category.obtainTitles}`, { activity }, 'GET_CATEGORY_TITLES').then(result => {
+			if (!result) ErrorService.setError(errorTypesConfig.GET_CATEGORY_TITLES);
+			return result;
+		});
+	},
+
+	getPosts(alias, type = 'all') {
+		return AjaxService.sendGet(`${methodsConfig.post.obtainByAlias}/${type}`, { alias }, 'GET_POSTS').then(result => {
+			if (!result.success) ErrorService.setError(errorTypesConfig.GET_POSTS_ERROR);
+			return result;
+		});
+	},
+
 	getComments(alias) {
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'GET_COMMENTS').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.GET_COMMENTS_ERROR);

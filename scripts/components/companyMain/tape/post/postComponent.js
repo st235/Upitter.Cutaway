@@ -7,21 +7,79 @@ import PostHeader from './postHeader/postHeader';
 import PostContent from './postContent/postContentComponent';
 import PostFooter from './postFooter/postFooterComponent';
 
+import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
+
 class PostComponent extends BaseLayout {
 	onBind() {
 
 	}
 
-	onCreate() {
+	onMenuOpened(postId, e) {
+		e.stopPropagation();
+
+		const { optionalMenu } = this.store.getState();
+
+		if (!optionalMenu) return this.store.dispatch(TOGGLE_MENU_OPENED(postId));
+		if (optionalMenu === postId) return this.store.dispatch(TOGGLE_MENU_OPENED());
+		if (optionalMenu !== postId) return this.store.dispatch(TOGGLE_MENU_OPENED(postId));
+	}
+
+	onShowPostOnMap(postId) {
+		console.log('showPostOnMap: ', postId);
+	}
+
+	onReport(postId) {
+		console.log('onReport: ', postId);
+	}
+
+	onShare(postId) {
+		console.log('onReport: ', postId);
+	}
+
+	onShare(postId) {
+		console.log('onReport: ', postId);
+	}
+
+	onVote(variant, postId) {
+		console.log(variant);
+		console.log(postId);
+	}
+
+	onImageClicked(postId, image) {
+
+	}
+
+	onAddToFavorites() {
+
+	}
+
+	onLike() {
+
+	}
+
+	onShowComments() {
 
 	}
 
 	render() {
+		const post = this.props.post;
+		if (!post) return null;
+
 		return (
 			<div className="post">
-				<PostHeader />
-				<PostContent />
-				<PostFooter />
+				<PostHeader
+					post={ post }
+					onMenuOpened={ this.onMenuOpened }
+					onShowOnMap={ this.onShowPostOnMap }
+					onReport={ this.onReport }
+					onShare={ this.onShare }
+				/>
+				<PostContent
+					post={ post }
+					onVote={ this.onVote.bind(this, post.get('customId')) }
+					onImageClicked={ this.onImageClicked.bind(this, post.get('customId')) }
+				/>
+				<PostFooter post={ post } />
 			</div>
 		);
 	}

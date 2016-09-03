@@ -13,14 +13,15 @@ class PostsNumberComponent extends BaseLayout {
 	}
 
 	render() {
+		const { logoUrl, name, createdDate } = this.props;
 		return (
 			<div className="post-company">
 				<div className="post-company_ava">
-					<img src="/images/logo_company.png" alt="ava" />
+					<img src={ logoUrl } alt="ava" />
 				</div>
 				<div className="post-company_info">
-					<div className="post-name"><a href="#">Roundplace</a></div>
-					<div className="post-other">12.08.2016</div>
+					<div className="post-name"><a href="#">{ name }</a></div>
+					<div className="post-other">{ createdDate }</div>
 				</div>
 			</div>
 		);

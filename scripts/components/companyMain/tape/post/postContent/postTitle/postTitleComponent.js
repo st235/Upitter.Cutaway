@@ -14,9 +14,11 @@ class PostTitleComponent extends BaseLayout {
 	}
 
 	render() {
+		const { title } = this.props;
+
 		return (
 			<div className="post-content_title">
-				Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.
+				{ title }
 			</div>
 		);
 	}

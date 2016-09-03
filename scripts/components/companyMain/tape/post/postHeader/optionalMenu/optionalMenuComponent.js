@@ -13,13 +13,16 @@ class OptionalMenuComponent extends BaseLayout {
 	}
 
 	render() {
+		const { isOpened, onShowOnMap, onReport, onShare, postId } = this.props;
+
+		if (isOpened !== postId) return null;
+
 		return (
 			<div className="context-menu_items">
 				<ul>
-					<li><a href="#">aasdsd</a></li>
-					<li><a href="#">aasdsdf</a></li>
-					<li><a href="#">adfsdf</a></li>
-					<li><a href="#">asddddf</a></li>
+					<li onClick={ onShowOnMap.bind(this, postId) }><a>Показать на карте</a></li>
+					<li onClick={ onReport.bind(this, postId) }><a>Пожаловаться</a></li>
+					<li onClick={ onShare.bind(this, postId) }><a>Поделиться записью</a></li>
 				</ul>
 			</div>
 		);

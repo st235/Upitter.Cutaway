@@ -11,7 +11,12 @@ export default {
 		en: 'Company with requested alias was not found'
 	},
 
-	[errorTypesConfig.GET_COMPANY_INFO_ERROR]: {
+	[errorTypesConfig.GET_CATEGORY_TITLES]: {
+		ru: 'Не удалось получить список категорий компании',
+		en: 'Unable to obtain category titles'
+	},
+
+	[errorTypesConfig.GET_POSTS_ERROR]: {
 		ru: 'Не удалось получить список публикаций',
 		en: 'Unable to get publications list'
 	},

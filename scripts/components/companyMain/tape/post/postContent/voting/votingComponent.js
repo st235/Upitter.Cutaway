@@ -1,36 +1,39 @@
 'use strict';
 
 import React from 'react';
+import _ from 'underscore';
 
 import BaseLayout from '../../../../../baseLayout/baseLayout';
 import VotingPreview from './votingPreviewComponent';
+import VotingVariant from './votingVariantComponent';
 
 class VotingComponent extends BaseLayout {
 	onBind() {
-
+		this.generateVariants = this.generateVariants.bind(this);
 	}
 
-	onCreate() {
-
+	generateVariants() {
+		const { variants, onVote } = this.props;
+		return variants.map((variant, index) => <VotingVariant key={ index } variant={ variant } onVote={ onVote } />);
 	}
 
 	render() {
-		return (
-			<div className="polling">
-				<div className="polling_item polling_item--btn">
-					<div className="polling_item-title">asdaasdfasd fasdf sdas</div>
+		const { variants, votersAmount, isVotedByMe } = this.props;
+
+		if (!variants) return null;
+
+		if (!isVotedByMe) {
+			return (
+				<div className="polling">
+					{ this.generateVariants() }
+					<div className="polling_info">
+						Всего проголосовало: <span>{ votersAmount }</span>
+					</div>
 				</div>
-				<div className="polling_item polling_item--btn">
-					<div className="polling_item-title">asdasasdfasd afsdfasdf asddas</div>
-				</div>
-				<div className="polling_item polling_item--btn">
-					<div className="polling_item-title">asdaasdfa sdfasdf asdfa sdfasdasdfas dfafa sdfaaasdf asdfa dsfasdf adsfa sdfasd fassdas</div>
-				</div>
-				<div className="polling_info">
-					Всего проголосовало: <span>777</span>
-				</div>
-			</div>
-		);
+			);
+		}
+
+		return <VotingPreview variants={ variants } votersAmount={ votersAmount } />;
 	}
 }
 

@@ -13,10 +13,14 @@ class SubscribeButtonComponent extends BaseLayout {
 	}
 
 	render() {
+		const { company } = this.store.getState();
+
 		return (
+			//TODO: Доделать число подписчиков
+			//TODO: Что делать, если подписан?
 			<div className="profile-follow">
 				<div className="btn btn--line btn--success btn--counter">
-					Подписаться
+					{ this.localeService.getLocalizedNameFor('subscribe') }
 					<span>247</span>
 				</div>
 			</div>

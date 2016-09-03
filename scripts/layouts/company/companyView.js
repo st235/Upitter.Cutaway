@@ -13,8 +13,8 @@ export default class LogView extends BaseLayout {
 		return (
 			<div>
 				<Header />
-				<CompanyMain>
-					<Aside alias={ alias } />
+				<CompanyMain alias={ alias } >
+					<Aside />
 					<Tape />
 				</CompanyMain>
 				<Footer />
