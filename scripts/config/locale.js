@@ -14,5 +14,9 @@ export default {
 	logout: {
 		ru: 'Выйти',
 		en: 'Logout'
+	},
+	postsNumber: {
+		ru: 'Всего постов: ',
+		en: 'PostsNumber: '
 	}
 };

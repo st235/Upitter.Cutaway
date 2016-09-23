@@ -17,7 +17,7 @@ class PostsNumberComponent extends BaseLayout {
 
 		return (
 			<div className="content-header">
-				<div className="content-header_item">Всего постов <span>{ count }</span></div>
+				<div className="content-header_item">{ this.localeService.getLocalizedNameFor('postsNumber') }<span>{ count }</span></div>
 			</div>
 		);
 	}
