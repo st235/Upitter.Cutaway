@@ -6,5 +6,13 @@ export default {
 	unsubscribe: {
 		ru: 'Отписаться',
 		en: 'Unsubscribe'
+	},
+	login: {
+		ru: 'Войти',
+		en: 'Login'
+	},
+	logout: {
+		ru: 'Выйти',
+		en: 'Logout'
 	}
 };

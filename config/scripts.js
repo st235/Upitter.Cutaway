@@ -18,7 +18,7 @@ module.exports = dir => {
 		},
 		output: {
 			path: output,
-			filename: filename
+			filename
 		},
 		plugins: [
 			new webpack.optimize.DedupePlugin(),

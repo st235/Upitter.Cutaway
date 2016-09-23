@@ -18,14 +18,13 @@ export default class IndexLayout extends BaseLayout {
 
 	render() {
 		const { children } = this.props;
-		const { loading } = this.store.getState();
+		const { loading, authModal } = this.store.getState();
 
-		// TODO: Доделать модалку авторизации
 		return (
 			<div onClick={ this.disableAllOptionalMenus }>
 				<Loading shouldBeShown={ loading.isShown } />
 				<ErrorMessage />
-				<UnauthorizedModal showUnaothorized={ false } />
+				<UnauthorizedModal showUnauthorized={ authModal } />
 				{ children }
 			</div>
 		);

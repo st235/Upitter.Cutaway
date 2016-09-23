@@ -56,6 +56,13 @@ export default {
 		});
 	},
 
+	authorizeWithVkApi() {
+		return AjaxService.sendGet(methodsConfig.external.vk, {}, 'AUTHORIZE_WITH_VK').then(result => {
+			console.log(result);
+			return result;
+		});
+	},
+
 	authorizeWithTwitter(alias) {
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'AUTHORIZE_WITH_TWITTER').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.UNABLE_TO_AUTHORIZE);

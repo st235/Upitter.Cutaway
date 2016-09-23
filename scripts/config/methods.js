@@ -26,5 +26,9 @@ export default {
 
 	category: {
 		obtainTitles: `${baseServerUrl}/categories/obtainTitles`
+	},
+
+	external: {
+		vk: 'https://oauth.vk.com/authorize?client_id=5624119&redirect_uri=https://oauth.vk.com/blank.html&scope=12&display=popup'
 	}
 };

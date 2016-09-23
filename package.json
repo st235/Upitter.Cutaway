@@ -13,10 +13,15 @@
     "immutable": "^3.8.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
+    "react-facebook-login": "^3.2.0",
+    "react-google-login": "^2.5.0",
+    "react-justified-gallery": "^0.0.6",
     "react-modal": "^1.4.0",
+    "react-photo-gallery": "^4.2.12",
     "react-router": "^2.4.0",
     "redux": "^3.5.2",
     "superagent": "^1.8.3",
+    "twitter-node-client": "0.0.6",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

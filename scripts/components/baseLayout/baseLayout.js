@@ -4,7 +4,8 @@ import moment from 'moment';
 import StoreService from '../../services/storeService';
 import LocalStorageService from '../../services/localStorageService';
 import ErrorService from '../../services/errorService';
-import LocaleService from '../../services/localeService'
+import LocaleService from '../../services/localeService';
+import UserService from '../../services/userService';
 
 import ApiUtils from '../../utils/apiUtils';
 
@@ -46,5 +47,9 @@ export default class BaseLayout extends Component {
 
 	get localeService() {
 		return LocaleService;
+	}
+
+	get userService() {
+		return UserService;
 	}
 }
