@@ -14,10 +14,12 @@ class LikeButton extends BaseLayout {
 	}
 
 	render() {
+		const { likesAmount, likedByUser, onLike } = this.props;
+
 		return (
-			<div className="action-btn">
+			<div className="action-btn" onClick={ onLike }>
 				<div className="action-icon action-icon--like"></div>
-				<div className="counter">12</div>
+				<div className="counter">{ likesAmount }</div>
 			</div>
 		);
 	}

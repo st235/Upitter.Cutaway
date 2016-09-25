@@ -18,7 +18,7 @@ class PostFooterComponent extends BaseLayout {
 	}
 
 	render() {
-		const { post, onShowComments } = this.props;
+		const { post, onShowComments, onLike } = this.props;
 
 		return (
 			<div className="post-footer">
@@ -31,7 +31,7 @@ class PostFooterComponent extends BaseLayout {
 						<CommentsButton commentsAmount={ post.get('commentsAmount') } onShowComments={ onShowComments } />
 					</div>
 					<div className="post-menu_item">
-						<LikeButton />
+						<LikeButton likesAmount={ post.get('likesAmount') } onLike={ onLike } />
 					</div>
 				</div>
 			</div>

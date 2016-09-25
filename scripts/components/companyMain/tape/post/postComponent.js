@@ -79,7 +79,11 @@ class PostComponent extends BaseLayout {
 					onVote={ this.onVote.bind(this, post.get('customId')) }
 					onImageClicked={ this.onImageClicked.bind(this, post.get('customId')) }
 				/>
-				<PostFooter post={ post } onShowComments={ this.onShowComments } />
+				<PostFooter
+					post={ post }
+					onShowComments={ this.onShowComments }
+				    onLike={ this.onLike }
+				/>
 			</div>
 		);
 	}
