@@ -57,8 +57,8 @@ class PostComponent extends BaseLayout {
 
 	}
 
-	onShowComments() {
-
+	onShowComments(commentsAmmout) {
+		console.log('showComments');
 	}
 
 	render() {
@@ -79,7 +79,7 @@ class PostComponent extends BaseLayout {
 					onVote={ this.onVote.bind(this, post.get('customId')) }
 					onImageClicked={ this.onImageClicked.bind(this, post.get('customId')) }
 				/>
-				<PostFooter post={ post } />
+				<PostFooter post={ post } onShowComments={ this.onShowComments } />
 			</div>
 		);
 	}

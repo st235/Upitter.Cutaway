@@ -14,10 +14,11 @@ class PostHeaderComponent extends BaseLayout {
 	}
 
 	render() {
+		const { commentsAmount, onShowComments } = this.props;
 		return (
-			<div className="action-btn">
+			<div className="action-btn" onClick={ onShowComments }>
 				<div className="action-icon action-icon--comment"></div>
-				<div className="counter">5</div>
+				<div className="counter">{ commentsAmount }</div>
 			</div>
 		);
 	}
