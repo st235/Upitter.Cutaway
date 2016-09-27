@@ -31,9 +31,6 @@ class TapeComponent extends BaseLayout {
 
 		if (!posts.length) return [];
 
-		console.log(posts.length);
-		console.log(posts);
-
 		return posts.map(post => <Post key={ post.customId } post={ new Map(post) } />);
 	}
 
@@ -71,8 +68,6 @@ class TapeComponent extends BaseLayout {
 		if (postsCount === null) hasMore = true;
 
 		if (this.invoked) hasMore = false;
-
-		console.log("RERENDER MAIN");
 
 		return (
 			<div className="side-right card">
