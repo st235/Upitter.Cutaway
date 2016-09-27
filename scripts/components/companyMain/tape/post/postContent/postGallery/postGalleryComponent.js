@@ -84,10 +84,6 @@ class GalleryComponent extends BaseLayout {
 				options.targetRowHeight = options.targetRowHeight * 1.5;
 				options.maxNumRows = 3;
 				break;
-			case 10:
-				options.targetRowHeight = options.targetRowHeight * 1.5;
-				options.maxNumRows = 4;
-				break;
 		}
 
 		const style = {
