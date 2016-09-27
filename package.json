@@ -21,6 +21,7 @@
     "react-photo-gallery": "^4.2.12",
     "react-router": "^2.4.0",
     "redux": "^3.5.2",
+    "redux-infinite-scroll": "^1.0.9",
     "superagent": "^1.8.3",
     "twitter-node-client": "0.0.6",
     "underscore": "^1.8.3"

@@ -4,8 +4,6 @@ import React from 'react';
 import BaseLayout from '../baseLayout/baseLayout';
 
 import { ADD_COMPANY, UPDATE_COMPANY_CATEGORIES } from '../../actions/companyActions';
-import { ADD_POSTS } from '../../actions/postsActions';
-import { SET_POSTS_COUNT } from '../../actions/postsCountActions';
 
 import ErrorService from '../../services/errorService';
 
@@ -27,14 +25,7 @@ class CompanyMainComponent extends BaseLayout {
 					}
 				});
 			}
-		}).then(() => {
-			this.request.getPosts(alias).then(result => {
-				if (result && result.success && result.response && result.response.count) {
-					this.store.dispatch(ADD_POSTS(result.response.posts));
-					this.store.dispatch(SET_POSTS_COUNT(result.response.count));
-				}
-			});
-		});
+		})
 	}
 
 	render() {

@@ -14,6 +14,7 @@ class PostsNumberComponent extends BaseLayout {
 
 	render() {
 		const { logoUrl, name, createdDate } = this.props;
+
 		return (
 			<div className="post-company">
 				<div className="post-company_ava">

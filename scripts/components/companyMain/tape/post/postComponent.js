@@ -82,7 +82,7 @@ class PostComponent extends BaseLayout {
 				<PostFooter
 					post={ post }
 					onShowComments={ this.onShowComments }
-				    onLike={ this.onLike }
+					onLike={ this.onLike }
 				/>
 			</div>
 		);

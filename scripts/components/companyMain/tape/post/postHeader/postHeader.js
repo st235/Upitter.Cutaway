@@ -24,15 +24,15 @@ class PostHeaderComponent extends BaseLayout {
 		return (
 			<div className="post-header">
 				<PostCompanyInfo
-					logoUrl={ post.get('author').get('logoUrl') }
-					name={ post.get('author').get('name') }
+					logoUrl={ post.get('author').logoUrl }
+					name={ post.get('author').name }
 					createdDate={ post.get('fromNow') }
 				/>
 				<div className="context-menu">
 					<OptionalMenuButton
 						shouldBeActive={ optionalMenu }
 						onMenuOpened={ this.props.onMenuOpened }
-					    postId={ postId }
+						postId={ postId }
 					/>
 					<OptionalMenu
 						isOpened={ optionalMenu }

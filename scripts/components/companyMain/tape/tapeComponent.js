@@ -1,38 +1,92 @@
 'use strict';
 
 import React from 'react';
+import ReduxInfiniteScroll from 'redux-infinite-scroll';
+import { Map } from 'immutable';
 
 import BaseLayout from '../../baseLayout/baseLayout';
 import PostsNumber from './postsNumber/postsNumberComponent';
 import Post from './post/postComponent';
 
+import { ADD_POSTS } from '../../../actions/postsActions';
+import { SET_POSTS_COUNT } from '../../../actions/postsCountActions';
+
 class TapeComponent extends BaseLayout {
 	onBind() {
 		this.generatePosts = this.generatePosts.bind(this);
+		this.loadMore = this.loadMore.bind(this);
 	}
 
-	onCreate() {
-
+	componentWillMount() {
+		this.lastPostId = null;
+		this.invoked = false;
 	}
 
 	generatePosts() {
-		const { posts } = this.store.getState();
+		let { posts } = this.store.getState();
 
-		if (!posts.size) return null;
+		posts = posts.toArray().sort((first, second) => {
+			return new Date(first.createdDate) > new Date(second.createdDate);
+		});
 
-		return posts.map(post => {
-			return <Post key={ post.get('customId') } post={ post } />;
+		if (!posts.length) return [];
+
+		console.log(posts.length);
+		console.log(posts);
+
+		return posts.map(post => <Post key={ post.customId } post={ new Map(post) } />);
+	}
+
+	loadMore() {
+		const { company } = this.store.getState();
+		const alias = company.alias;
+
+		this.invoked = true;
+
+		this.request.getPosts(alias, this.lastPostId).then(result => {
+			this.invoked = false;
+			if (result && result.success && result.response && result.response.count) {
+				let posts = result.response.posts;
+				this.store.dispatch(ADD_POSTS(posts));
+
+				if (posts || posts.length) {
+					this.lastPostId = posts[posts.length - 1].customId;
+				}
+
+				this.store.dispatch(SET_POSTS_COUNT(result.response.count));
+			}
+		}).catch(() => {
+			this.invoked = false;
 		});
 	}
 
 	render() {
-		const { postsCount } = this.store.getState();
+		const { postsCount, posts, company } = this.store.getState();
+
+		if (!company || !company.alias) return null;
+
+		let hasMore = false;
+
+		if (posts.size < postsCount) hasMore = true;
+		if (postsCount === null) hasMore = true;
+
+		if (this.invoked) hasMore = false;
+
+		console.log("RERENDER MAIN");
 
 		return (
 			<div className="side-right card">
 				<PostsNumber count={ postsCount } />
 				<div className="content-feed" >
-					{ this.generatePosts() }
+					<ReduxInfiniteScroll
+						threshold={ 10 }
+						elementIsScrollable={ false }
+						items={ this.generatePosts() }
+						loadMore={ this.loadMore }
+						hasMore={ hasMore }
+						loadingMore={ this.invoked }
+						holder={"div"}
+					/>
 				</div>
 			</div>
 		);

@@ -18,7 +18,7 @@ class PostContentComponent extends BaseLayout {
 
 		return (
 			<div onClick={ onVote.bind(this, variant) } className="polling_item polling_item--btn">
-				<div className="polling_item-title">{ variant.get('value') }</div>
+				<div className="polling_item-title">{ variant.value }</div>
 			</div>
 		);
 	}

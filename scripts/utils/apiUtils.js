@@ -8,6 +8,7 @@ import errorTypesConfig from '../config/errorTypes';
 
 export default {
 	getCompanyInfo(alias) {
+		console.log(alias);
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'ADD_COMPANY').then(result => {
 			if (!result) ErrorService.setError(errorTypesConfig.GET_COMPANY_INFO_ERROR);
 			return result;
@@ -21,8 +22,8 @@ export default {
 		});
 	},
 
-	getPosts(alias, type = 'all') {
-		return AjaxService.sendGet(`${methodsConfig.post.obtainByAlias}/${type}`, { alias }, 'GET_POSTS').then(result => {
+	getPosts(alias, postId, type = 'old') {
+		return AjaxService.sendGet(`${methodsConfig.post.obtainByAlias}/${type}`, { alias, postId }, 'GET_POSTS').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.GET_POSTS_ERROR);
 			return result;
 		});
