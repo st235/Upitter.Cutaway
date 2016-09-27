@@ -8,6 +8,7 @@ import postsCount from './postsCountReducer';
 import optionalMenu from './optionalMenuReducer';
 import comments from './commentsReducer';
 import authModal from './authModalReducer';
+import showOnMap from './showOnMapReducer';
 
 export default combineReducers({
 	loading,
@@ -17,5 +18,6 @@ export default combineReducers({
 	postsCount,
 	optionalMenu,
 	comments,
-	authModal
+	authModal,
+	showOnMap
 });

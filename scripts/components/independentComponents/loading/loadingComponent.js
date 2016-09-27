@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import BaseLayout from '../baseLayout/baseLayout';
+import BaseLayout from '../../baseLayout/baseLayout';
 
 class LoadingComponent extends BaseLayout {
 	render() {

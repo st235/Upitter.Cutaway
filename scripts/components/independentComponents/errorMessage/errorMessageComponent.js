@@ -3,8 +3,8 @@
 import React from 'react';
 import cn from 'classnames';
 
-import BaseLayout from '../baseLayout/baseLayout';
-import ErrorService from '../../services/errorService';
+import BaseLayout from '../../baseLayout/baseLayout';
+import ErrorService from '../../../services/errorService';
 
 class ErrorMessageComponent extends BaseLayout {
 	onBind() {

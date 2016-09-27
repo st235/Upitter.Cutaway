@@ -5,9 +5,9 @@ import Modal from 'react-modal';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 
-import BaseLayout from '../baseLayout/baseLayout';
+import BaseLayout from '../../baseLayout/baseLayout';
 
-import socialConfig from '../../config/social';
+import socialConfig from '../../../config/social';
 
 class ProfileContent extends BaseLayout {
 
