@@ -23,25 +23,24 @@ class SubscribeButtonComponent extends BaseLayout {
 	}
 
 	render() {
-		let { longitude, latitude, icon, show } = this.props;
+		let { longitude, latitude, icon, text, show } = this.props;
 		const style = { backgroundImage: `url('${icon}')` };
 
 		if (!show) return null;
 
 		if (latitude) latitude = parseFloat(latitude);
 		if (longitude) longitude = parseFloat(longitude);
-		console.log([ latitude, longitude ]);
 
 		return (
 			<Modal isOpen={ show } >
 				<div onClick={ this.closeModal }>X</div>
 
 				<Map
-					apiKey={ 'AIzaSyADqQFjA83Se2Nu-TvB7D9NWqJc68IGZCc' }
+					bootstrapURLKeys={{ key: 'AIzaSyACh3vVbMrtOHXwXmlDdk46h7wOi2TIsDE' }}
 					center={ [latitude, longitude] }
-					zoom={ 9 }
+					zoom={ 15 }
 				>
-					<Marker styles={ style } lat={ latitude } lng={ longitude } />
+					<Marker styles={ style } lat={ latitude } lng={ longitude } text={ text } />
 				</Map>
 			</Modal>
 		);

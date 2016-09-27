@@ -31,6 +31,7 @@ export default class IndexLayout extends BaseLayout {
 					latitude={ showOnMap.latitude }
 					longitude={ showOnMap.longitude }
 					icon={ showOnMap.icon }
+					text={ showOnMap.text }
 				/>
 				{ children }
 			</div>

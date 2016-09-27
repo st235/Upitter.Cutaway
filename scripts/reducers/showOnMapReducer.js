@@ -11,6 +11,7 @@ const ShowOnMapReducer = (state = initialState, action) => {
 			latitude: action.latitude,
 			longitude: action.longitude,
 			icon: action.icon,
+			text: action.text,
 			show: true
 		});
 	case 'CLOSE_SHOW_ON_MAP':

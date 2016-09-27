@@ -1,9 +1,10 @@
-const OPEN_SHOW_ON_MAP = (latitude, longitude, icon) => {
+const OPEN_SHOW_ON_MAP = (latitude, longitude, icon, text) => {
 	return {
 		type: 'OPEN_SHOW_ON_MAP',
 		latitude,
 		longitude,
-		icon
+		icon,
+		text
 	};
 };
 

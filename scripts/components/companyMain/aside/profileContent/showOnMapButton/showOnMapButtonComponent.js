@@ -16,11 +16,12 @@ class ShowOnMapButtonComponent extends BaseLayout {
 
 	showOnMap() {
 		const { company } = this.store.getState();
+		const name = company.name;
 		const coordinates = company.coordinates[0];
 		const { latitude, longitude } = coordinates;
 		const icon = company.logoUrl;
 
-		this.store.dispatch(OPEN_SHOW_ON_MAP(latitude, longitude, icon));
+		this.store.dispatch(OPEN_SHOW_ON_MAP(latitude, longitude, icon, name));
 	}
 
 	render() {
