@@ -14,7 +14,7 @@ class ActivityListComponent extends BaseLayout {
 		const { company } = this.store.getState();
 		if (!company || !company.activity) return null;
 
-		return _.map(company.activity, activity => <div key={ parseInt(activity.customId) } className="tag">{ activity.title }</div>);
+		return _.map(company.activity, (activity, index) => <div key={ index } className="tag">{ activity.title }</div>);
 	}
 
 	render() {
