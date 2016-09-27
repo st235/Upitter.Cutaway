@@ -23,11 +23,11 @@ class GalleryComponent extends BaseLayout {
 	}
 
 	generateSingleImageInput(image) {
-		const width = image.get('width');
-		const height = image.get('height');
-		const aspectRatio = image.get('aspectRatio');
-		const imageMainUrl = image.get('originalUrl');
-		const thumbnailUrl = image.get('thumbUrl');
+		const width = image.width;
+		const height = image.height;
+		const aspectRatio = image.aspectRatio;
+		const imageMainUrl = image.originalUrl;
+		const thumbnailUrl = image.thumbUrl;
 
 		return {
 			imageMainUrl,

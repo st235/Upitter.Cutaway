@@ -26,7 +26,7 @@ class TapeComponent extends BaseLayout {
 		let { posts } = this.store.getState();
 
 		posts = posts.toArray().sort((first, second) => {
-			return new Date(first.createdDate) > new Date(second.createdDate);
+			return new Date(first.createdDate) < new Date(second.createdDate);
 		});
 
 		if (!posts.length) return [];
@@ -44,6 +44,7 @@ class TapeComponent extends BaseLayout {
 			this.invoked = false;
 			if (result && result.success && result.response && result.response.count) {
 				let posts = result.response.posts;
+
 				this.store.dispatch(ADD_POSTS(posts));
 
 				if (posts || posts.length) {
