@@ -4,6 +4,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
+import VkLogin from '../../vkLogin/vkLoginComponent';
 
 import BaseLayout from '../../baseLayout/baseLayout';
 
@@ -12,7 +13,7 @@ import socialConfig from '../../../config/social';
 class ProfileContent extends BaseLayout {
 
 	render() {
-		const { showUnauthorized, onGoogleAuth, onFacebookAuth, onVkAuth, onTwitterAuth } = this.props;
+		const { showUnauthorized = true, onGoogleAuth, onFacebookAuth, onVkAuth, onTwitterAuth } = this.props;
 
 		if (!showUnauthorized) return null;
 
@@ -24,20 +25,25 @@ class ProfileContent extends BaseLayout {
 					<FacebookLogin
 						appId={ socialConfig.auth.facebook.appId }
 						autoLoad={ true }
-						fields="accessToken"
+						fields="name"
 						onClick={console.log}
-						callback={onFacebookAuth} />
+						callback={console.log} />
 				</div>
 				<div><button>TWITTER</button></div>
 				<div>
 					<GoogleLogin
 						clientId={ socialConfig.auth.google.clientId }
 						buttonText="Google"
-						onSuccess={onGoogleAuth}
-						onFailure={onGoogleAuth}
+						onSuccess={console.log}
+						onFailure={console.log}
 					/>
 				</div>
-				<div><button>VKONTAKTE</button></div>
+				<div>
+					<VkLogin appId={ "5624119" } autoLoad={ true }
+					callback={ () => {
+					console.log(window.VK);
+					} }/>
+				</div>
 			</Modal>
 		);
 	}

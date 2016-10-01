@@ -6,6 +6,8 @@ import UnauthorizedModal from '../components/independentComponents/unauthorizedM
 import ErrorMessage from '../components/independentComponents/errorMessage/errorMessageComponent';
 import ShowOnMap from '../components/independentComponents/showOnMap/showOnMapComponent';
 
+import Unauthorized from '../components/independentComponents/unauthorizedModal/unauthorizedModalComponent';
+
 import { TOGGLE_MENU_OPENED } from '../actions/optionalMenuActions';
 
 export default class IndexLayout extends BaseLayout {
@@ -23,6 +25,7 @@ export default class IndexLayout extends BaseLayout {
 
 		return (
 			<div onClick={ this.disableAllOptionalMenus }>
+				<Unauthorized  />
 				<Loading shouldBeShown={ loading.isShown } />
 				<ErrorMessage />
 				<UnauthorizedModal showUnauthorized={ authModal } />

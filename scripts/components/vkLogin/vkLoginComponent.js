@@ -23,7 +23,7 @@ class VkLoginComponent extends BaseLayout {
 
 		window.vkAsyncInit = () => {
 			window.VK.init({
-				appId
+				apiId: appId
 			});
 
 			if (autoLoad) window.VK.Auth.getLoginStatus(this.checkLoginState);
@@ -68,13 +68,13 @@ class VkLoginComponent extends BaseLayout {
 			window.location.href = `https://www.oauth.vk.com/authorize?client_id=${appId}&redirect_uri=${window.location.href}&scope=${scope}&display=popup`;
 			// window.location.href = `https://www.facebook.com/dialog/oauth?client_id=${appId}&redirect_uri=${window.location.href}&state=facebookdirect&${scope}`;
 		} else {
-			window.FB.login(this.checkLoginState, { scope });
+			window.VK.Auth.login(this.checkLoginState, { scope });
 		}
 	}
 
 	render() {
 		return (
-			<div className="header-right" onClick={ this.authWithVk }>
+			<div className="header-right" onClick={ this.onClick }>
 				Авторизуемся через контач
 			</div>
 		);

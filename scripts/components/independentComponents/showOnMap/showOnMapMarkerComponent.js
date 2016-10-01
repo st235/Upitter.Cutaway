@@ -21,5 +21,3 @@ class SubscribeButtonComponent extends BaseLayout {
 }
 
 export default SubscribeButtonComponent;
-
-

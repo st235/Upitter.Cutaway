@@ -31,7 +31,9 @@ class TapeComponent extends BaseLayout {
 
 		if (!posts.length) return [];
 
-		return posts.map(post => <Post key={ post.customId } post={ new Map(post) } />);
+		return posts.map(post => {
+			return <Post key={ post.customId } post={ new Map(post) } />;
+		});
 	}
 
 	loadMore() {
@@ -45,12 +47,12 @@ class TapeComponent extends BaseLayout {
 			if (result && result.success && result.response && result.response.count) {
 				let posts = result.response.posts;
 
-				this.store.dispatch(ADD_POSTS(posts));
 
 				if (posts || posts.length) {
 					this.lastPostId = posts[posts.length - 1].customId;
 				}
 
+				this.store.dispatch(ADD_POSTS(posts));
 				this.store.dispatch(SET_POSTS_COUNT(result.response.count));
 			}
 		}).catch(() => {
