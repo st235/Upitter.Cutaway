@@ -9,10 +9,16 @@ import ShowOnMap from '../components/independentComponents/showOnMap/showOnMapCo
 import Unauthorized from '../components/independentComponents/unauthorizedModal/unauthorizedModalComponent';
 
 import { TOGGLE_MENU_OPENED } from '../actions/optionalMenuActions';
+import { TOGGLE_UNAUTHORIZED} from '../actions/unauthorizedActions';
 
 export default class IndexLayout extends BaseLayout {
 	onBind() {
 		this.disableAllOptionalMenus = this.disableAllOptionalMenus.bind(this);
+		this.closeUnauthorized = this.closeUnauthorized.bind(this);
+	}
+
+	closeUnauthorized() {
+		this.store.dispatch(TOGGLE_UNAUTHORIZED());
 	}
 
 	disableAllOptionalMenus() {
@@ -21,14 +27,14 @@ export default class IndexLayout extends BaseLayout {
 
 	render() {
 		const { children } = this.props;
-		const { loading, authModal, showOnMap } = this.store.getState();
+		const { loading, unauthorized, showOnMap } = this.store.getState();
 
 		return (
 			<div onClick={ this.disableAllOptionalMenus }>
 				<Unauthorized  />
 				<Loading shouldBeShown={ loading.isShown } />
 				<ErrorMessage />
-				<UnauthorizedModal showUnauthorized={ authModal } />
+				<UnauthorizedModal showUnauthorized={ unauthorized.show } closeModal={ this.closeUnauthorized } />
 				<ShowOnMap
 					show={ showOnMap.show }
 					latitude={ showOnMap.latitude }

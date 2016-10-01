@@ -13,12 +13,13 @@ import socialConfig from '../../../config/social';
 class ProfileContent extends BaseLayout {
 
 	render() {
-		const { showUnauthorized = true, onGoogleAuth, onFacebookAuth, onVkAuth, onTwitterAuth } = this.props;
+		const { showUnauthorized, closeModal } = this.props;
 
 		if (!showUnauthorized) return null;
 
 		return (
 			<Modal isOpen={ showUnauthorized } >
+				<span onClick={ closeModal }>ЗАКРЫТЬ МОДАЛКУ</span>
 				<h1>Для того, чтобы подписаться, лайкнуть или репостнуть запись, необходимо авторизоваться</h1>
 				<p>Авторизоваться через:</p>
 				<div>

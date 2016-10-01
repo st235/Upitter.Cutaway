@@ -8,12 +8,23 @@ import HeaderMenu from './headerMenu/headerMenuComponent';
 import HeaderSearch from './headerSearch/headerSearchComponent';
 import HeaderLoginButton from './headerLoginButton/headerLoginButtonComponent';
 
+import { TOGGLE_UNAUTHORIZED } from '../../actions/unauthorizedActions';
+
 class HeaderComponent extends BaseLayout {
 	onBind() {
-
+		this.onLogin = this.onLogin.bind(this);
+		this.onLogout = this.onLogout.bind(this);
 	}
 
 	onCreate() {
+
+	}
+
+	onLogin() {
+		this.store.dispatch(TOGGLE_UNAUTHORIZED());
+	}
+
+	onLogout() {
 
 	}
 
@@ -24,7 +35,7 @@ class HeaderComponent extends BaseLayout {
 					<HeaderLogo />
 					<HeaderMenu />
 					<HeaderSearch />
-					<HeaderLoginButton />
+					<HeaderLoginButton isLogged={ this.userService.getCurrentUser() } onLogin={ this.onLogin } onLogout={ this.onLogout } />
 				</div>
 			</header>
 		);
