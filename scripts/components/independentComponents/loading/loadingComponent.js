@@ -23,8 +23,8 @@ class LoadingComponent extends BaseLayout {
 	}
 }
 
-// LoadingComponent.propTypes = {
-// 	shouldBeShown: React.PropTypes.bool
-// };
+LoadingComponent.propTypes = {
+	shouldBeShown: React.PropTypes.bool
+};
 
 export default LoadingComponent;

@@ -18,5 +18,33 @@ export default {
 	postsNumber: {
 		ru: 'Всего постов: ',
 		en: 'PostsNumber: '
+	},
+	categoryDiscount: {
+		ru: 'Скидка',
+		en: 'Discount'
+	},
+	categoryEvents: {
+		ru: 'События',
+		en: 'Events'
+	},
+	categorySales: {
+		ru: 'Распродажа',
+		en: 'Sale'
+	},
+	categoryHires: {
+		ru: 'Вакансия',
+		en: 'Hire'
+	},
+	categoryNews: {
+		ru: 'Новости',
+		en: 'News'
+	},
+	categoryServices: {
+		ru: 'Услуги',
+		en: 'Services'
+	},
+	categorySpecial: {
+		ru: 'Специальное предложение',
+		en: 'Special'
 	}
 };

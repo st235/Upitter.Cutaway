@@ -22,7 +22,7 @@ class PostFooterComponent extends BaseLayout {
 
 		return (
 			<div className="post-footer">
-				<PostCategory />
+				<PostCategory category={ post.get('category') } />
 				<div className="post-menu">
 					<div className="post-menu_item">
 						<FavoriteButton />
