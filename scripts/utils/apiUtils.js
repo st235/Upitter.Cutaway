@@ -2,13 +2,15 @@
 
 import AjaxService from '../services/ajaxServiceWithLoading';
 import ErrorService from '../services/errorService';
+import UserService from '../services/userService';
+
+import unauthorizedUtils from './unauthorizedUtils';
 
 import methodsConfig from '../config/methods';
 import errorTypesConfig from '../config/errorTypes';
 
 export default {
 	getCompanyInfo(alias) {
-		console.log(alias);
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'ADD_COMPANY').then(result => {
 			if (!result) ErrorService.setError(errorTypesConfig.GET_COMPANY_INFO_ERROR);
 			return result;
@@ -36,7 +38,16 @@ export default {
 		});
 	},
 
+	getProfile(accessToken) {
+		return AjaxService.sendGet(`${methodsConfig.user.profile}`, { accessToken }, 'GET_USER_PROFILE').then(result => {
+			if (!result.success) ErrorService.setError(errorTypesConfig.GET_USER_PROFILE);
+			return result;
+		});
+	},
+
 	subscribe(alias) {
+		if (!UserService.getAccessToken()) unauthorizedUtils.showUnaothorized();
+
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'SUBSCRIBE').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.SUBSCRIBE_ERROR);
 			return result;
@@ -44,6 +55,8 @@ export default {
 	},
 
 	like(alias) {
+		if (!UserService.getAccessToken()) unauthorizedUtils.showUnaothorized();
+
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'LIKE').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.LIKE_ERROR);
 			return result;
@@ -51,43 +64,10 @@ export default {
 	},
 
 	comment(alias) {
+		if (!UserService.getAccessToken()) unauthorizedUtils.showUnaothorized();
+
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'COMMENT').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.COMMENT_ERROR);
-			return result;
-		});
-	},
-
-	authorizeWithVkApi() {
-		return AjaxService.sendGet(methodsConfig.external.vk, {}, 'AUTHORIZE_WITH_VK').then(result => {
-			console.log(result);
-			return result;
-		});
-	},
-
-	authorizeWithTwitter(alias) {
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'AUTHORIZE_WITH_TWITTER').then(result => {
-			if (!result.success) ErrorService.setError(errorTypesConfig.UNABLE_TO_AUTHORIZE);
-			return result;
-		});
-	},
-
-	authorizeWithFacebook(alias) {
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'AUTHORIZE_WITH_FACEBOOK').then(result => {
-			if (!result.success) ErrorService.setError(errorTypesConfig.UNABLE_TO_AUTHORIZE);
-			return result;
-		});
-	},
-
-	authorizeWithVk(alias) {
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'AUTHORIZE_WITH_VKONTAKTE').then(result => {
-			if (!result.success) ErrorService.setError(errorTypesConfig.UNABLE_TO_AUTHORIZE);
-			return result;
-		});
-	},
-
-	authorizeWithGPlus(alias) {
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'AUTHORIZE_WITH_GOOGLE+').then(result => {
-			if (!result.success) ErrorService.setError(errorTypesConfig.UNABLE_TO_AUTHORIZE);
 			return result;
 		});
 	},

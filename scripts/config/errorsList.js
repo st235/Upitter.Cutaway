@@ -44,5 +44,10 @@ export default {
 	[errorTypesConfig.UNABLE_TO_AUTHORIZE]: {
 		ru: 'Не удалось авторизоваться',
 		en: 'Unable to authorize'
+	},
+
+	[errorTypesConfig.GET_USER_PROFILE]: {
+		ru: 'Не удалось получить информацию о пользователе',
+		en: 'Unable to get user information'
 	}
 };

@@ -6,6 +6,7 @@ import LocalStorageService from '../../services/localStorageService';
 import ErrorService from '../../services/errorService';
 import LocaleService from '../../services/localeService';
 import UserService from '../../services/userService';
+import LocationService from '../../services/locationService';
 
 import ApiUtils from '../../utils/apiUtils';
 
@@ -51,5 +52,9 @@ export default class BaseLayout extends Component {
 
 	get userService() {
 		return UserService;
+	}
+
+	get locationService() {
+		return LocationService;
 	}
 }

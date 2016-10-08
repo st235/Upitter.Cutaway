@@ -14,9 +14,9 @@ class SiteComponent extends BaseLayout {
 
 	render() {
 		const { company } = this.store.getState();
-		
+
 		return (
-			<div className="profile-name">{ company.name }</div>
+			<div className="profile-contacts_site" ><a href={ `http://${company.site}` }>{ company.site }</a></div>
 		);
 	}
 }

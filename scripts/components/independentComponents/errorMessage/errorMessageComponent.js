@@ -17,11 +17,15 @@ class ErrorMessageComponent extends BaseLayout {
 
 	render() {
 		const currentError = ErrorService.getError();
-		const errorClass = cn({ errorMessage: true, errorMessageIsShown: currentError });
-		
+		const errorClass = cn({ 'notify-toast--danger': true, errorMessageIsShown: currentError });
+
 		return (
-			<div className={ errorClass }>
-				{ currentError }
+			<div className="notify-fixed-wrapper">
+				<div className="container">
+					<div className={ errorClass }>
+						{ currentError }
+					</div>
+				</div>
 			</div>
 		);
 	}

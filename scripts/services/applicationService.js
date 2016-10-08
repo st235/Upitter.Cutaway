@@ -6,6 +6,7 @@ import StoreService from './storeService';
 import LocaleService from './localeService';
 import LocalStorageService from './localStorageService';
 import UserService from './userService';
+import LocationService from './localeService';
 
 import routesConfig from '../config/routes';
 import socialConfig from '../config/social';
@@ -23,6 +24,7 @@ export default class ApplicationService {
 		LocalStorageService.init();
 		LocaleService.init();
 		UserService.init(socialConfig.auth);
+		LocationService.init();
 
 		this.render();
 	}

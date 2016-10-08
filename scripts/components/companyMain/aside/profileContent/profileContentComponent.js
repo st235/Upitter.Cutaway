@@ -8,6 +8,7 @@ import CompanyDescription from './companyDescription/companyDescriptionComponent
 import ProfileContacts from './profileContacts/profileContactsComponent';
 import ShowOnMapButton from './showOnMapButton/showOnMapButtonComponent';
 import ActivityList from './activityList/activityListComponent';
+import CompanyName from './companyName/companyNameComponent';
 
 class ProfileContent extends BaseLayout {
 	onBind() {
@@ -21,6 +22,7 @@ class ProfileContent extends BaseLayout {
 	render() {
 		return (
 			<div className="profile-content">
+				<CompanyName />
 				<SubscribeButton />
 				<CompanyDescription />
 				<ProfileContacts />
