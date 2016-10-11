@@ -1,20 +1,20 @@
 import { browserHistory } from 'react-router';
 
+import LocalStorageService from './localStorageService';
+
 export default class LocationService {
-	static init() {
-		this.previousPath = '';
-	}
+	static init() {}
 
 	static hasPreviousPath() {
-		return this.previousPath;
+		return LocalStorageService.get('previousPath');
 	}
 
 	static setPreviousPath(previousPath) {
-		this.previousPath = previousPath;
+		LocalStorageService.set('previousPath', previousPath);
 	}
 
 	static goToCompany() {
-		browserHistory.push(this.previousPath);
+		browserHistory.push(LocalStorageService.get('previousPath'));
 	}
 
 	static goToMain() {

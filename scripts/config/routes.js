@@ -11,7 +11,6 @@ import FailureView from '../layouts/authorization/failure/failureView';
 import LocationService from '../services/locationService';
 
 function successLoginRouteEntered(nextState, replaceFunc, callback) {
-	console.log("IN ONENTER");
 	callback();
 }
 

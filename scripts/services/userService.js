@@ -1,6 +1,8 @@
 'use strict';
 
 import LocalStorageService from './localStorageService';
+import StoreService from './storeService';
+import { SET_USER, SET_ACCESS_TOKEN, LOGOUT } from '../actions/userActions';
 
 export default class UserService {
 	static init(authConfig) {
@@ -9,6 +11,7 @@ export default class UserService {
 
 	static setCurrentUser(user) {
 		LocalStorageService.set('currentUser', user);
+		StoreService.getStore().dispatch(SET_USER(user));
 	}
 
 	static getCurrentUser() {
@@ -17,6 +20,7 @@ export default class UserService {
 
 	static setAccessToken(accessToken) {
 		LocalStorageService.set('accessToken', accessToken);
+		StoreService.getStore().dispatch(SET_ACCESS_TOKEN(accessToken));
 	}
 
 	static getAccessToken() {
@@ -29,5 +33,6 @@ export default class UserService {
 
 	static clearCurrentUser() {
 		this.setCurrentUser(null);
+		StoreService.getStore().dispatch(LOGOUT());
 	}
 }
