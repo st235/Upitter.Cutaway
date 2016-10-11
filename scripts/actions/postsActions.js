@@ -5,5 +5,28 @@ const ADD_POSTS = (posts) => {
 	};
 };
 
-export { ADD_POSTS };
-export default { ADD_POSTS };
+const VOTE = (postId, variantIndex, userId) => {
+	return {
+		type: 'VOTE',
+		postId,
+		variantIndex,
+		userId
+	};
+};
+
+const LIKE = (postId) => {
+	return {
+		type: 'LIKE',
+		postId
+	};
+};
+
+const ADD_TO_FAVORITES = (postId) => {
+	return {
+		type: 'ADD_TO_FAVORITES',
+		postId
+	};
+};
+
+export { ADD_POSTS, VOTE, LIKE, ADD_TO_FAVORITES };
+export default { ADD_POSTS, VOTE, LIKE, ADD_TO_FAVORITES };

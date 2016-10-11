@@ -21,10 +21,10 @@ export default class SuccessView extends BaseLayout {
 		const accessToken = this.getAccessToken();
 		if (!accessToken) this.locationService.goToFailureCallback();
 
-		this.request.getProfile(accessToken).then(user => {
-			if (!user) this.locationService.goToFailureCallback();
+		this.request.getProfile(accessToken).then(result => {
+			if (!result.success) this.locationService.goToFailureCallback();
 			this.userService.setAccessToken(accessToken);
-			this.userService.setCurrentUser(user);
+			this.userService.setCurrentUser(result.response);
 			this.locationService.hasPreviousPath() ? this.locationService.goToCompany() : this.locationService.goToMain();
 		});
 	}

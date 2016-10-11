@@ -14,7 +14,7 @@ class VotingComponent extends BaseLayout {
 
 	generateVariants() {
 		const { variants, onVote } = this.props;
-		return variants.map((variant, index) => <VotingVariant key={ index } variant={ variant } onVote={ onVote } />);
+		return variants.map((variant, index) => <VotingVariant key={ index } variantIndex={ index } variant={ variant } onVote={ onVote } />);
 	}
 
 	render() {

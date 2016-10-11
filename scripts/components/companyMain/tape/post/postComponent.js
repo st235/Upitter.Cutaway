@@ -8,6 +8,7 @@ import PostContent from './postContent/postContentComponent';
 import PostFooter from './postFooter/postFooterComponent';
 
 import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
+import { VOTE } from '../../../../actions/postsActions';
 
 class PostComponent extends BaseLayout {
 	onBind() {
@@ -36,13 +37,10 @@ class PostComponent extends BaseLayout {
 		console.log('onReport: ', postId);
 	}
 
-	onShare(postId) {
-		console.log('onReport: ', postId);
-	}
-
-	onVote(variant, postId) {
-		console.log(variant);
-		console.log(postId);
+	onVote(postId, variantIndex, userId) {
+		this.request.vote(postId, variantIndex).then(() => {
+			this.store.dispatch(VOTE(postId, variantIndex, userId));
+		});
 	}
 
 	onImageClicked(postId, image) {

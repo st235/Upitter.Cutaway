@@ -9,14 +9,6 @@ import Gallery from './postGallery/postGalleryComponent';
 import Voting from './voting/votingComponent';
 
 class PostContentComponent extends BaseLayout {
-	onBind() {
-
-	}
-
-	onCreate() {
-
-	}
-
 	render() {
 		const { post, onVote, onImageClicked } = this.props;
 		if (!post) return null;
@@ -29,8 +21,8 @@ class PostContentComponent extends BaseLayout {
 				<Voting
 					variants={ post.get('variants') }
 					votersAmount={ post.get('votersAmount') }
-				    isVotedByMe={ post.get('isVotedByMe') }
-				    onVote={ onVote }
+					isVotedByMe={ post.get('isVotedByMe') }
+					onVote={ onVote }
 				/>
 			</div>
 		);
