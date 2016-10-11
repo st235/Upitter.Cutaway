@@ -45,17 +45,18 @@ export default {
 		});
 	},
 
-	subscribe(alias) {
-		if (!UserService.getAccessToken()) unauthorizedUtils.showUnaothorized();
+	subscribe(companyId) {
+		const accessToken = UserService.getAccessToken();
+		if (!accessToken) return unauthorizedUtils.showUnauthorized();
 
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'SUBSCRIBE').then(result => {
+		return AjaxService.sendGet(`${methodsConfig.user.toggleSubscription}/${companyId}`, { accessToken }, 'SUBSCRIBE').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.SUBSCRIBE_ERROR);
 			return result;
 		});
 	},
 
 	like(alias) {
-		if (!UserService.getAccessToken()) unauthorizedUtils.showUnaothorized();
+		if (!UserService.getAccessToken()) return unauthorizedUtils.showUnauthorized();
 
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'LIKE').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.LIKE_ERROR);
@@ -64,7 +65,7 @@ export default {
 	},
 
 	comment(alias) {
-		if (!UserService.getAccessToken()) unauthorizedUtils.showUnaothorized();
+		if (!UserService.getAccessToken()) return unauthorizedUtils.showUnauthorized();
 
 		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'COMMENT').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.COMMENT_ERROR);

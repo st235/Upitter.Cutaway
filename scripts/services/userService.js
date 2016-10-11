@@ -31,8 +31,9 @@ export default class UserService {
 		return !!LocalStorageService.get('currentUser');
 	}
 
-	static clearCurrentUser() {
+	static logout() {
 		this.setCurrentUser(null);
+		this.setAccessToken(null);
 		StoreService.getStore().dispatch(LOGOUT());
 	}
 }

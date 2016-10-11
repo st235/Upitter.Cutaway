@@ -9,17 +9,18 @@ import { SUBSCRIBE_TO_COMPANY } from '../../../../../actions/companyActions';
 
 class SubscribeButtonComponent extends BaseLayout {
 	onBind() {
-		this.onSubscribe = this.onSubscribe.bind(this);
+		this.onToggleSubscriptionSubscribe = this.onToggleSubscriptionSubscribe.bind(this);
 	}
 
 	onCreate() {
 
 	}
 
-	onSubscribe(customId) {
+	onToggleSubscriptionSubscribe(customId) {
 		return e => {
-			console.log(customId);
-			// this.store.dispatch(SUBSCRIBE_TO_COMPANY);
+			this.request.subscribe(customId).then(() => {
+				this.store.dispatch(SUBSCRIBE_TO_COMPANY());
+			});
 		};
 	}
 
@@ -37,7 +38,7 @@ class SubscribeButtonComponent extends BaseLayout {
 		return (
 			//TODO: Что делать, если подписан?
 			<div className="profile-follow">
-				<div className={ classNames } onClick={ this.onSubscribe(customId) }>
+				<div className={ classNames } onClick={ this.onToggleSubscriptionSubscribe(customId) }>
 					{ this.localeService.getLocalizedNameFor('subscribe') }
 					<span>{ subscribersAmount }</span>
 				</div>

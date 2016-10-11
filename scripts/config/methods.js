@@ -10,7 +10,7 @@ export default {
 
 	user: {
 		profile: `${baseServerUrl}/profile`,
-		toggleSubscription: `${baseServerUrl}/user/toggle_subscription/:companyId`
+		toggleSubscription: `${baseServerUrl}/user/toggle_subscription`
 	},
 
 	post: {

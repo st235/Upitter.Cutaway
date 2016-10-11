@@ -25,7 +25,7 @@ class HeaderComponent extends BaseLayout {
 	}
 
 	onLogout() {
-		this.userService.clearCurrentUser();
+		this.userService.logout();
 	}
 
 	render() {
