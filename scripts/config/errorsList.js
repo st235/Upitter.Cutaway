@@ -36,6 +36,16 @@ export default {
 		en: 'Unable to rate publication'
 	},
 
+	[errorTypesConfig.VOTE_ERROR]: {
+		ru: 'Не удалось проголосовать',
+		en: 'Unable to vote'
+	},
+
+	[errorTypesConfig.FAVORITE_ERROR]: {
+		ru: 'Не удалось добавить в избранное',
+		en: 'Unable to add to favorites'
+	},
+
 	[errorTypesConfig.COMMENT_ERROR]: {
 		ru: 'Не удалось оставить комментарий',
 		en: 'Unable to post a comment'

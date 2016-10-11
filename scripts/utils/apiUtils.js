@@ -55,19 +55,41 @@ export default {
 		});
 	},
 
-	like(alias) {
-		if (!UserService.getAccessToken()) return unauthorizedUtils.showUnauthorized();
+	like(postId) {
+		const accessToken = UserService.getAccessToken();
+		if (!accessToken) return unauthorizedUtils.showUnauthorized();
 
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'LIKE').then(result => {
+		return AjaxService.sendGet(`${methodsConfig.post.like}/${postId}`, { accessToken }, 'LIKE').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.LIKE_ERROR);
 			return result;
 		});
 	},
 
-	comment(alias) {
-		if (!UserService.getAccessToken()) return unauthorizedUtils.showUnauthorized();
+	addToFavorites(postId) {
+		const accessToken = UserService.getAccessToken();
+		if (!accessToken) return unauthorizedUtils.showUnauthorized();
 
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'COMMENT').then(result => {
+		return AjaxService.sendGet(`${methodsConfig.post.favorite}/${postId}`, { accessToken }, 'ADD_TO_FAVORITES').then(result => {
+			if (!result.success) ErrorService.setError(errorTypesConfig.FAVORITE_ERROR);
+			return result;
+		});
+	},
+
+	vote(postId, variantIndex) {
+		const accessToken = UserService.getAccessToken();
+		if (!accessToken) return unauthorizedUtils.showUnauthorized();
+
+		return AjaxService.sendGet(`${methodsConfig.post.vote}/${postId}`, { accessToken, variantIndex }, 'VOTE').then(result => {
+			if (!result.success) ErrorService.setError(errorTypesConfig.VOTE_ERROR);
+			return result;
+		});
+	},
+
+	comment(alias) {
+		const accessToken = UserService.getAccessToken();
+		if (!accessToken) return unauthorizedUtils.showUnauthorized();
+
+		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, { accessToken }, 'COMMENT').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.COMMENT_ERROR);
 			return result;
 		});
