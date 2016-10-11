@@ -31,7 +31,7 @@ class PostFooterComponent extends BaseLayout {
 						<CommentsButton commentsAmount={ post.get('commentsAmount') } onShowComments={ onShowComments } />
 					</div>
 					<div className="post-menu_item">
-						<LikeButton likesAmount={ post.get('likesAmount') } onLike={ onLike } />
+						<LikeButton likesAmount={ post.get('likesAmount') } isLikedByMe={ post.get('isLikedByMe') } onLike={ onLike } />
 					</div>
 				</div>
 			</div>

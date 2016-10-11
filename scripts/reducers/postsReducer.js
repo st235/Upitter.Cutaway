@@ -1,11 +1,12 @@
 'use strict';
 
 import { List } from 'immutable';
+import _ from 'underscore';
 
 function findPostById(list, postId) {
 	const post = list.find(item => item.customId === postId);
 	const index = list.indexOf(post);
-	return { post, index};
+	return { post, index };
 }
 
 function replacePostWith(list, index, post) {
@@ -20,10 +21,23 @@ const PostsReducer = (state = new List(), action) => {
 		const { post, index } = findPostById(state, action.postId);
 		post.variants[action.variantIndex].voters.push(action.userId);
 		post.variants[action.variantIndex].count++;
+		post.votersAmount++;
 		post.isVotedByMe = true;
 		return replacePostWith(state, index, post);
 	case 'LIKE':
-		return state.concat(new List(action.posts));
+		const postInfo = findPostById(state, action.postId);
+		
+		if (postInfo.post.likeVoters && postInfo.post.likeVoters.length && (postInfo.post.likeVoters.indexOf(action.userId) > -1)) {
+			postInfo.post.likeVoters = _.without(postInfo.post.likeVoters, action.userId);
+			postInfo.post.likesAmount--;
+			postInfo.post.isLikedByMe = false;
+		} else {
+			postInfo.post.likeVoters.push(action.userId);
+			postInfo.post.likesAmount++;
+			postInfo.post.isLikedByMe = true;
+		}
+
+		return replacePostWith(state, postInfo.index, postInfo.post);
 	case 'ADD_TO_FAVORITES':
 		return state.concat(new List(action.posts));
 	default:

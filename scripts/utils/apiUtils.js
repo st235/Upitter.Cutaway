@@ -25,7 +25,8 @@ export default {
 	},
 
 	getPosts(alias, postId, type = 'old') {
-		return AjaxService.sendGet(`${methodsConfig.post.obtainByAlias}/${type}`, { alias, postId }, 'GET_POSTS').then(result => {
+		const accessToken = UserService.getAccessToken();
+		return AjaxService.sendGet(`${methodsConfig.post.obtainByAlias}/${type}`, { alias, postId, accessToken }, 'GET_POSTS').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.GET_POSTS_ERROR);
 			return result;
 		});
@@ -79,7 +80,7 @@ export default {
 		const accessToken = UserService.getAccessToken();
 		if (!accessToken) return unauthorizedUtils.showUnauthorized();
 
-		return AjaxService.sendGet(`${methodsConfig.post.vote}/${postId}`, { accessToken, variantIndex }, 'VOTE').then(result => {
+		return AjaxService.sendGet(`${methodsConfig.post.vote}/${postId}/${variantIndex}`, { accessToken }, 'VOTE').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.VOTE_ERROR);
 			return result;
 		});

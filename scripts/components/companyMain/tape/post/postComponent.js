@@ -8,7 +8,7 @@ import PostContent from './postContent/postContentComponent';
 import PostFooter from './postFooter/postFooterComponent';
 
 import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
-import { VOTE } from '../../../../actions/postsActions';
+import { VOTE, LIKE } from '../../../../actions/postsActions';
 
 class PostComponent extends BaseLayout {
 	onBind() {
@@ -51,8 +51,10 @@ class PostComponent extends BaseLayout {
 
 	}
 
-	onLike() {
-
+	onLike(postId, userId) {
+		this.request.like(postId).then(() => {
+			this.store.dispatch(LIKE(postId, userId));
+		});
 	}
 
 	onShowComments(commentsAmmout) {
@@ -80,7 +82,7 @@ class PostComponent extends BaseLayout {
 				<PostFooter
 					post={ post }
 					onShowComments={ this.onShowComments }
-					onLike={ this.onLike }
+					onLike={ this.onLike.bind(this, post.get('customId')) }
 				/>
 			</div>
 		);

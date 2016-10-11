@@ -14,10 +14,11 @@ const VOTE = (postId, variantIndex, userId) => {
 	};
 };
 
-const LIKE = (postId) => {
+const LIKE = (postId, userId) => {
 	return {
 		type: 'LIKE',
-		postId
+		postId,
+		userId
 	};
 };
 

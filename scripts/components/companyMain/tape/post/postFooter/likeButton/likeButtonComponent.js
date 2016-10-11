@@ -1,24 +1,32 @@
 'use strict';
 
 import React from 'react';
+import cn from 'classnames';
 
 import BaseLayout from '../../../../../baseLayout/baseLayout';
 
 class LikeButton extends BaseLayout {
 	onBind() {
-
+		this.generateClassNames = this.generateClassNames.bind(this);
 	}
 
-	onCreate() {
+	generateClassNames() {
+		const { isLikedByMe } = this.props;
 
+		return cn({
+			'action-icon': true,
+			'action-icon--like': true,
+			'active': isLikedByMe
+		});
 	}
 
 	render() {
-		const { likesAmount, likedByUser, onLike } = this.props;
+		const { likesAmount, onLike } = this.props;
+		const user = this.userService.getCurrentUser();
 
 		return (
-			<div className="action-btn" onClick={ onLike }>
-				<div className="action-icon action-icon--like"></div>
+			<div className="action-btn" onClick={ onLike.bind(this, user.customId) }>
+				<div className={ this.generateClassNames() }></div>
 				<div className="counter">{ likesAmount }</div>
 			</div>
 		);

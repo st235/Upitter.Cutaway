@@ -16,7 +16,7 @@ export default {
 	post: {
 		like: `${baseServerUrl}/post/like`,
 		favorite: `${baseServerUrl}/post/favorite`,
-		vote: `${baseServerUrl}/post/favorite`,
+		vote: `${baseServerUrl}/post/vote`,
 		obtainByAlias: `${baseServerUrl}/post/obtainByAlias`
 	},
 
