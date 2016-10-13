@@ -26,7 +26,7 @@ const PostsReducer = (state = new List(), action) => {
 		return replacePostWith(state, index, post);
 	case 'LIKE':
 		const postInfo = findPostById(state, action.postId);
-		
+
 		if (postInfo.post.likeVoters && postInfo.post.likeVoters.length && (postInfo.post.likeVoters.indexOf(action.userId) > -1)) {
 			postInfo.post.likeVoters = _.without(postInfo.post.likeVoters, action.userId);
 			postInfo.post.likesAmount--;
@@ -39,7 +39,19 @@ const PostsReducer = (state = new List(), action) => {
 
 		return replacePostWith(state, postInfo.index, postInfo.post);
 	case 'ADD_TO_FAVORITES':
-		return state.concat(new List(action.posts));
+		const foundPostInfo = findPostById(state, action.postId);
+
+		if (foundPostInfo.post.favoriteVoters && foundPostInfo.post.favoriteVoters.length && (foundPostInfo.post.favoriteVoters.indexOf(action.userId) > -1)) {
+			foundPostInfo.post.favoriteVoters = _.without(foundPostInfo.post.favoriteVoters, action.userId);
+			foundPostInfo.post.favoritesAmount--;
+			foundPostInfo.post.isFavoriteByMe = false;
+		} else {
+			foundPostInfo.post.favoriteVoters.push(action.userId);
+			foundPostInfo.post.favoritesAmount++;
+			foundPostInfo.post.isFavoriteByMe = true;
+		}
+
+		return replacePostWith(state, foundPostInfo.index, foundPostInfo.post);
 	default:
 		return state;
 	}

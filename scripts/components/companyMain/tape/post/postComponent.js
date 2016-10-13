@@ -8,7 +8,7 @@ import PostContent from './postContent/postContentComponent';
 import PostFooter from './postFooter/postFooterComponent';
 
 import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
-import { VOTE, LIKE } from '../../../../actions/postsActions';
+import { VOTE, LIKE, ADD_TO_FAVORITES } from '../../../../actions/postsActions';
 
 class PostComponent extends BaseLayout {
 	onBind() {
@@ -47,8 +47,10 @@ class PostComponent extends BaseLayout {
 
 	}
 
-	onAddToFavorites() {
-
+	onAddToFavorites(postId, userId) {
+		this.request.addToFavorites(postId).then(() => {
+			this.store.dispatch(ADD_TO_FAVORITES(postId, userId));
+		});
 	}
 
 	onLike(postId, userId) {
@@ -58,7 +60,7 @@ class PostComponent extends BaseLayout {
 	}
 
 	onShowComments(commentsAmmout) {
-		console.log('showComments');
+		console.log(`showComments ${commentsAmmout}`);
 	}
 
 	render() {
@@ -83,6 +85,7 @@ class PostComponent extends BaseLayout {
 					post={ post }
 					onShowComments={ this.onShowComments }
 					onLike={ this.onLike.bind(this, post.get('customId')) }
+					onAddToFavorites={ this.onAddToFavorites.bind(this, post.get('customId')) }
 				/>
 			</div>
 		);

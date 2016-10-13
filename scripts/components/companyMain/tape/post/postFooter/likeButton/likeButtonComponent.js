@@ -23,9 +23,10 @@ class LikeButton extends BaseLayout {
 	render() {
 		const { likesAmount, onLike } = this.props;
 		const user = this.userService.getCurrentUser();
+		const customId =  user ? user.customId : null;
 
 		return (
-			<div className="action-btn" onClick={ onLike.bind(this, user.customId) }>
+			<div className="action-btn" onClick={ onLike.bind(this, customId) }>
 				<div className={ this.generateClassNames() }></div>
 				<div className="counter">{ likesAmount }</div>
 			</div>

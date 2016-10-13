@@ -22,10 +22,11 @@ const LIKE = (postId, userId) => {
 	};
 };
 
-const ADD_TO_FAVORITES = (postId) => {
+const ADD_TO_FAVORITES = (postId, userId) => {
 	return {
 		type: 'ADD_TO_FAVORITES',
-		postId
+		postId,
+		userId
 	};
 };
 

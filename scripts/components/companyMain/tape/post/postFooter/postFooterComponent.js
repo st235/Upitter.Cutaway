@@ -18,14 +18,14 @@ class PostFooterComponent extends BaseLayout {
 	}
 
 	render() {
-		const { post, onShowComments, onLike } = this.props;
+		const { post, onShowComments, onLike, onAddToFavorites } = this.props;
 
 		return (
 			<div className="post-footer">
 				<PostCategory category={ post.get('category') } />
 				<div className="post-menu">
 					<div className="post-menu_item">
-						<FavoriteButton />
+						<FavoriteButton favoritesAmount={ post.get('favoritesAmount') } isFavoriteByMe={ post.get('isFavoriteByMe') } onAddToFavorites={ onAddToFavorites } />
 					</div>
 					<div className="post-menu_item">
 						<CommentsButton commentsAmount={ post.get('commentsAmount') } onShowComments={ onShowComments } />
