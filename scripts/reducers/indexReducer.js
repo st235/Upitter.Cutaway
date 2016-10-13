@@ -9,6 +9,7 @@ import optionalMenu from './optionalMenuReducer';
 import comments from './commentsReducer';
 import showOnMap from './showOnMapReducer';
 import unauthorized from './unauthorizedReducer';
+import report from './reportReducer';
 
 export default combineReducers({
 	loading,
@@ -19,5 +20,6 @@ export default combineReducers({
 	optionalMenu,
 	comments,
 	unauthorized,
-	showOnMap
+	showOnMap,
+	report
 });

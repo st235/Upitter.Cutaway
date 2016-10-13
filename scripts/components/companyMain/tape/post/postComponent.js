@@ -9,6 +9,7 @@ import PostFooter from './postFooter/postFooterComponent';
 
 import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
 import { VOTE, LIKE, ADD_TO_FAVORITES } from '../../../../actions/postsActions';
+import { OPEN_SHOW_ON_MAP } from '../../../../actions/showOnMapActions';
 
 class PostComponent extends BaseLayout {
 	onBind() {
@@ -25,8 +26,16 @@ class PostComponent extends BaseLayout {
 		if (optionalMenu !== postId) return this.store.dispatch(TOGGLE_MENU_OPENED(postId));
 	}
 
-	onShowPostOnMap(postId) {
-		console.log('showPostOnMap: ', postId);
+	onShowPostOnMap(post) {
+		const coordinates = post.get('coordinates');
+		const text = post.get('title');
+
+		this.store.dispatch(OPEN_SHOW_ON_MAP(
+			coordinates.latitude,
+			coordinates.longitude,
+			null,
+			text
+		));
 	}
 
 	onReport(postId) {

@@ -37,6 +37,7 @@ class PostHeaderComponent extends BaseLayout {
 					<OptionalMenu
 						isOpened={ optionalMenu }
 						postId={ postId }
+						post={ post }
 						onShowOnMap={ this.props.onShowOnMap }
 						onReport={ this.props.onReport }
 						onShare={ this.props.onShare }
