@@ -32,8 +32,8 @@ export default {
 		});
 	},
 
-	getComments(alias) {
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, {}, 'GET_COMMENTS').then(result => {
+	getComments(postId, commentId, type = 'old') {
+		return AjaxService.sendGet(`${methodsConfig.comment.obtain}`, { postId, commentId }, 'GET_COMMENTS').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.GET_COMMENTS_ERROR);
 			return result;
 		});

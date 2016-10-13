@@ -21,6 +21,9 @@ const CommentsReducer = (state = new Map, action) => {
 	switch (action.type) {
 	case 'ADD_COMMENTS':
 		return addComments(state, action.postId, action.comments);
+	case 'ADD_NEW_COMMENT':
+		// return addComments(state, action.postId, action.comments);
+		return state;
 	case 'EDIT_COMMENT':
 		return state;
 	case 'DELETE_COMMENT':

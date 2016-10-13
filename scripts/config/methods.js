@@ -23,7 +23,8 @@ export default {
 	comment: {
 		addComment: `${baseServerUrl}/comment/create`,
 		editComment: `${baseServerUrl}/comment/edit`,
-		removeComment: `${baseServerUrl}/comment/remove`
+		removeComment: `${baseServerUrl}/comment/remove`,
+		obtain: `${baseServerUrl}/comments`
 	},
 
 	category: {

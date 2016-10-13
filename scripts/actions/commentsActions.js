@@ -6,6 +6,14 @@ const ADD_COMMENTS = (postId, comments) => {
 	};
 };
 
+const ADD_NEW_COMMENT = (postId, comment) => {
+	return {
+		type: 'ADD_NEW_COMMENT',
+		postId,
+		comment
+	};
+};
+
 const EDIT_COMMENT = (postId, commentId, commentText) => {
 	return {
 		type: 'EDIT_COMMENT',
@@ -22,5 +30,5 @@ const DELETE_COMMENT = (postId, commentId) => {
 	};
 };
 
-export { ADD_COMMENTS, EDIT_COMMENT, DELETE_COMMENT };
-export default { ADD_COMMENTS, EDIT_COMMENT, DELETE_COMMENT };
+export { ADD_COMMENTS, EDIT_COMMENT, DELETE_COMMENT, ADD_NEW_COMMENT };
+export default { ADD_COMMENTS, EDIT_COMMENT, DELETE_COMMENT, ADD_NEW_COMMENT };
