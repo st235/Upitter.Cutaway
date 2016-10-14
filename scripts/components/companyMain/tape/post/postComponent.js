@@ -6,6 +6,7 @@ import BaseLayout from '../../../baseLayout/baseLayout';
 import PostHeader from './postHeader/postHeader';
 import PostContent from './postContent/postContentComponent';
 import PostFooter from './postFooter/postFooterComponent';
+import CommentsManager from './commentsManager/commentsManagerComponent';
 
 import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
 import { VOTE, LIKE, ADD_TO_FAVORITES } from '../../../../actions/postsActions';
@@ -68,12 +69,16 @@ class PostComponent extends BaseLayout {
 		});
 	}
 
-	onShowComments(commentsAmmout) {
-		console.log(`showComments ${commentsAmmout}`);
+	onShowComments(commentsAmount) {
+		console.log(`showComments ${commentsAmount}`);
 	}
 
 	render() {
 		const post = this.props.post;
+		const postId = post.get('customId');
+		const { comments } = this.store.getState();
+		const currentPostComments = comments.get(postId);
+		
 		if (!post) return null;
 
 		return (
@@ -95,6 +100,10 @@ class PostComponent extends BaseLayout {
 					onShowComments={ this.onShowComments }
 					onLike={ this.onLike.bind(this, post.get('customId')) }
 					onAddToFavorites={ this.onAddToFavorites.bind(this, post.get('customId')) }
+				/>
+				<CommentsManager
+					comments={ currentPostComments }
+				    commentsAmount={  }
 				/>
 			</div>
 		);
