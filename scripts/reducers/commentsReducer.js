@@ -17,7 +17,7 @@ function addComments(commentsMap, postId, newCommentsArr) {
 	return setCommentsListByPostId(commentsMap, postId, commentsList.merge(newCommentsArr));
 }
 
-const CommentsReducer = (state = new Map, action) => {
+const CommentsReducer = (state = new Map(), action) => {
 	switch (action.type) {
 	case 'ADD_COMMENTS':
 		return addComments(state, action.postId, action.comments);

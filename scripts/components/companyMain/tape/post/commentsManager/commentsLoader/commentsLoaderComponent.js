@@ -12,6 +12,8 @@ class CommentLoaderComponent extends BaseLayout {
 	render() {
 		const { onLoadMore, commentsAmount, currentCommentsAmount, lastCommentId } = this.props;
 
+		console.log(commentsAmount);
+		console.log(currentCommentsAmount);
 		if (commentsAmount === currentCommentsAmount) return null;
 
 		return (

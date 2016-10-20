@@ -78,7 +78,7 @@ class PostComponent extends BaseLayout {
 		const postId = post.get('customId');
 		const { comments } = this.store.getState();
 		const currentPostComments = comments.get(postId);
-		
+
 		if (!post) return null;
 
 		return (
@@ -103,7 +103,7 @@ class PostComponent extends BaseLayout {
 				/>
 				<CommentsManager
 					comments={ currentPostComments }
-				    commentsAmount={  }
+					commentsAmount={ post.get('commentsAmount') }
 				/>
 			</div>
 		);

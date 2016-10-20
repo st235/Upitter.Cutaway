@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import _ from 'underscore';
 
 import BaseLayout from '../../../../baseLayout/baseLayout';
 import Comment from './comment/commentComponent';
@@ -11,11 +10,14 @@ import CommentsLoader from './commentsLoader/commentsLoaderComponent';
 import { ADD_COMMENTS, ADD_NEW_COMMENT, DELETE_COMMENT, EDIT_COMMENT } from '../../../../../actions/commentsActions';
 
 class CommentsManagerComponent extends BaseLayout {
-	componentDidMount() {
+	constructor() {
+		super();
+
 		this.state = {
 			authorId: null
 		};
 	}
+
 	onBind() {
 		this.generateComments = this.generateComments.bind(this);
 	}
@@ -30,13 +32,16 @@ class CommentsManagerComponent extends BaseLayout {
 
 	render() {
 		const { comments, commentsAmount, postId, onPublishComment, onLoadMore } = this.props;
+		const currentCommentsAmount = (comments && commentsAmount && comments.size) ? commentsAmount - comments.size : 0;
+		const lastCommentId = comments ? comments.get(postId).last().customId : null;
+
 		return (
 			<div className="comments-manager">
 				<CommentsLoader
 					onLoadMore={ onLoadMore }
 					commentsAmount={ commentsAmount }
-					currentCommentsAmount={ commentsAmount - comments.size }
-					lastCommentId={ comments.get(postId).last().customId }
+					currentCommentsAmount={ currentCommentsAmount }
+					lastCommentId={ lastCommentId }
 				/>
 				<ul>
 					{ this.generateComments() }
