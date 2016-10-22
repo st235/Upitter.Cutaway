@@ -9,6 +9,11 @@ body {
     min-width: 1020px;
 }
 
+h1, h2, h3, h4 {
+    color: #255180;
+    font-weight: 100;
+}
+
 a {
     color: #0a5198;
     text-decoration: none;
@@ -18,14 +23,49 @@ a {
 }
 
 .container {
-    max-width: 960px;
     position: relative;
+    max-width: 960px;
     margin: 0 auto;
     @include clearfix();
+}
+
+.c-success {
+    color: #20c77d;
+}
+.c-danger {
+    color: #ff6064;
 }
 
 .card {
     background: #fff;
     padding: 30px;
     border-radius: 5px;
+    overflow: hidden;
+    &.card-main {
+        width: 500px;
+        padding: 60px;
+        margin: 50px auto;
+        border-radius: 10px;
+        h1.e-404 {
+            text-align: center;
+            font-size: 4rem;
+            margin-top: 0;
+            span {
+                font-size: 1.22rem;
+                color: #8594a2;
+                font-weight: 400;
+                text-transform: uppercase;
+                letter-spacing: .1em;
+            }
+        }
+        .card-main-description {
+            text-align: center;
+            font-size: 1rem;
+            color: #8594a2;
+            span {
+                font-weight: 700;
+                color: #ff6064;
+            }
+        }
+    }
 }

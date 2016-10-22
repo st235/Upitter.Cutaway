@@ -9,6 +9,61 @@
     cursor: pointer;
     outline: none;
 
+    &.btn-block {
+        width: 100% !important;
+    }
+
+    &.social-icon {
+        padding: 10px;
+        padding-left: 57px;
+        color: #fff;
+        border: 0;
+        font-size: .9rem;
+        &:before {
+            background-image: url(../images/icons/social_ic-white.png);
+            background-size: 150px 60px;
+            top: 50%;
+            margin-top: -14px;
+            left: 10px;
+        }
+        &.social-icon--vk {
+            background: #4c75a3;
+            &:hover {
+                background: lighten(#4c75a3, 8%);
+                &:before {
+                    background-position-y: 0;
+                }
+            }
+        }
+        &.social-icon--twitter {
+            background: #00aced;
+            &:hover {
+                background: lighten(#00aced, 8%);
+                &:before {
+                    background-position-y: 0;
+                }
+            }
+        }
+        &.social-icon--google {
+            background: #dc4a39;
+            &:hover {
+                background: lighten(#dc4a39, 8%);
+                &:before {
+                    background-position-y: -30px;
+                }
+            }
+        }
+        &.social-icon--facebook {
+            background: #3b5998;
+            &:hover {
+                background: lighten(#3b5998, 8%);
+                &:before {
+                    background-position-y: -30px;
+                }
+            }
+        }
+    }
+
     &.btn--icon-map {
         position: relative;
         padding-left: 35px;
@@ -106,3 +161,17 @@
         }
     }
 }
+
+.group-btn {
+    .btn {
+        &.btn-block {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.social-btn {
+    max-width: 260px;
+    margin: 0 auto;
+}
+

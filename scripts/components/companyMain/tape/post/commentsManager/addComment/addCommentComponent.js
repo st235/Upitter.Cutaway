@@ -24,11 +24,13 @@ class AddCommentComponent extends BaseLayout {
 
 	render() {
 		return (
-			<div className="add-comment">
-				<textarea placeholder="Введите что-нибудь" value={ this.state.value }>
-
-				</textarea>
-				<button onClick={ this.onPublish }>Опубликовать комментарий</button>
+			<div className="comment-footer">
+				<form className="comment-form">
+					<input type="text" className="form-control" placeholder="Комментировать.." value={ this.state.value } />
+					<div className="input-group-btn">
+						<button className="btn" onClick={ this.onPublish }>Комментировать</button>
+					</div>
+				</form>
 			</div>
 		);
 	}

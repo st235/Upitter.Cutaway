@@ -1,6 +1,7 @@
 .context-menu {
     position: relative;
 }
+$dot-color: darken(#eff1f4, 8%);
 .context-menu_btn {
     position: relative;
     width: 30px;
@@ -15,7 +16,7 @@
         margin: -2px 0 0 -2px;
         width: 4px;
         height: 4px;
-        background: #eff1f4;
+        background: $dot-color;
         border-radius: 10px;
         &:after,
         &:before {
@@ -26,7 +27,7 @@
             display: inline-block;
             width: 4px;
             height: 4px;
-            background: #eff1f4;
+            background: $dot-color;
             border-radius: 10px;
         }
         &:after {
@@ -72,6 +73,7 @@
                 display: block;
                 padding: 10px 20px;
                 min-width: 200px;
+                cursor: pointer;
                 &:hover {
                     background: #eff1f4;
                 }

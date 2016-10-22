@@ -16,8 +16,10 @@ export default class FailureView extends BaseLayout {
 		console.log(this.props);
 
 		return (
-			<div className="ui container">
-				Login failed
+			<div className="card card-main">
+				<div className="card-main-description">
+					<span className="c-danger">Login failed</span>
+				</div>
 			</div>
 		);
 	}

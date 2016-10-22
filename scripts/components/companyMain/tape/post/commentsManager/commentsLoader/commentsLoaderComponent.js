@@ -17,7 +17,7 @@ class CommentLoaderComponent extends BaseLayout {
 		if (commentsAmount === currentCommentsAmount) return null;
 
 		return (
-			<div className="comments-loader" onClick={ onLoadMore(lastCommentId) }>
+			<div className="comments-loader btn" onClick={ onLoadMore(lastCommentId) }>
 				Загрузить еще { commentsAmount - currentCommentsAmount } комментариев
 			</div>
 		);

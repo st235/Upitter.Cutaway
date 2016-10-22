@@ -1,0 +1,104 @@
+.post-comments {
+    border-top: 1px solid #eff1f4;
+    border-bottom: 10px solid #eff1f4;
+    margin: 30px -30px -30px;
+    padding: 0 30px 0 30px;
+    .comments-list {
+    }
+}
+.comments-loader {
+    margin: 20px 0 0;
+    text-align: center;
+    width: 100%;
+    border-radius: 4px;
+}
+.comments-list {
+    // padding: 20px;
+    overflow-y: scroll;
+    max-height: 248px;
+    .comment-item {
+        &:first-child {
+            border-top: 0;
+        }
+        &:last-child {
+            border-bottom: 1px solid #eff1f4;
+        }
+    }
+    span {
+        display: block;
+        font-size: .8rem;
+        color: #8594a2;
+        padding: 20px 0;
+        border-bottom: 1px solid #eff1f4;
+    }
+}
+.comment-item {
+    position: relative;
+    padding: 20px 0;
+    border-top: 1px solid #eff1f4;
+
+    &.has-ava {
+        .comment-item-header,
+        .comment-item-body {
+            padding-left: 48px;
+        }
+    }
+}
+.comment-item-header {
+    position: relative;
+    .user-ava {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 38px;
+        height: 38px;
+        border-radius: 50px;
+    }
+    .comment-item-date {
+        float: right;
+        margin-top: 5px;
+    }
+}
+.comment-item-name {
+    display: inline-block;
+    font-weight: 700;
+    font-size: .95rem;
+    line-height: 1.4;
+    color: #15212d;
+}
+.comment-item-date {
+    font-size: .8rem;
+    color: #8594a2;
+}
+.comment-item-body {
+    font-size: .85rem;
+    line-height: 1.4;
+    padding-top: 2px;
+}
+.comment-footer {
+    position: relative;
+    padding: 20px 0;
+}
+.comment-form {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    width: 100%;
+    > * {
+        display: table-cell;
+    }
+    .form-control {
+        width: 100%;
+        border-radius: 4px 0 0 4px;
+        border-right: 0;
+    }
+    .input-group-btn {
+        white-space: nowrap;
+        vertical-align: middle;
+        width: 1%;
+    }
+    .btn {
+        border-radius: 0 4px 4px 0;
+    }
+}

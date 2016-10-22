@@ -32,16 +32,20 @@ class SubscribeButtonComponent extends BaseLayout {
 		if (longitude) longitude = parseFloat(longitude);
 
 		return (
-			<Modal isOpen={ show } >
-				<div onClick={ this.closeModal }>X</div>
-
-				<Map
-					bootstrapURLKeys={{ key: 'AIzaSyACh3vVbMrtOHXwXmlDdk46h7wOi2TIsDE' }}
-					center={ [latitude, longitude] }
-					zoom={ 15 }
-				>
-					<Marker styles={ style } lat={ latitude } lng={ longitude } text={ text } />
-				</Map>
+			<Modal isOpen={ show } overlayClassName="modal-overlay" className="modal-for-map" >
+				<div className="modal-header">
+					<div className="modal-title">Показать на карте</div>
+					<div className="modal-close" onClick={ this.closeModal }></div>
+				</div>
+				<div className="modal-content">
+					<Map
+						bootstrapURLKeys={{ key: 'AIzaSyACh3vVbMrtOHXwXmlDdk46h7wOi2TIsDE' }}
+						center={ [latitude, longitude] }
+						zoom={ 15 }
+						className="modal-map">
+						<Marker styles={ style } lat={ latitude } lng={ longitude } text={ text } />
+					</Map>
+				</div>
 			</Modal>
 		);
 	}

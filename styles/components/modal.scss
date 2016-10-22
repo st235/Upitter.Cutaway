@@ -1,0 +1,114 @@
+
+.ReactModalPortal {
+    position: relative;
+    z-index: 9999;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(4, 4, 4, 0.1);
+}
+.modal-standart,
+.modal-for-map {
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0 20px 40px rgba(0,0,0,.16);
+    background: #fff;
+    outline: none;
+    overflow: hidden;
+}
+.modal-standart {
+    padding: 20px;
+    max-width: 560px;
+    margin: 80px auto;
+    .modal-header {
+        .modal-title {
+            margin-top: -20px;
+        }
+    }
+}
+.modal-for-map {
+    width: 960px;
+    height: 75%;
+    padding-top: 65px;
+    margin: 80px auto 0;
+    .modal-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-bottom: 0;
+        .modal-title {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .modal-close {
+            right: 20px;
+        }
+    }
+    .modal-content {
+        position: relative;
+        height: 100%;
+    }
+}
+
+.modal-map {
+    
+}
+
+.modal-close {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: .6;
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        margin-top: -1px;
+        background: #8d9ba8;
+    }
+    &:before {
+        transform: rotate(45deg);
+    }
+    &:after {
+        transform: rotate(-45deg);
+    }
+    &:hover {
+        opacity: 1;
+        &:before,
+        &:after {
+            background: #ff6064;
+        }
+    }
+}
+
+.modal-header {
+    position: relative;
+    border-bottom: 1px solid #eff1f4;
+    margin-bottom: 20px;
+    .modal-close {
+        position: absolute;
+        right: 0;
+        top: 20px;
+    }
+    .modal-title {
+        display: block;
+        padding: 20px 0;
+        font-size: 1.1rem;
+        line-height: 1.4;
+        font-weight: 700;
+        color: #15212d;
+    }
+}

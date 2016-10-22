@@ -8,11 +8,12 @@ import markerStyles from './markerStyles';
 class SubscribeButtonComponent extends BaseLayout {
 	render() {
 		const { styles, text } = this.props;
-		const style = Object.assign({}, markerStyles, styles);
+		// const style = Object.assign({}, markerStyles, styles);
 
 		return (
-			<div style={ style }>
-				<div className="company-marker-name">
+			<div className="map-marker">
+				<div style={ styles } className="map-marker-image"></div>
+				<div className="map-marker-name">
 					{ text }
 				</div>
 			</div>

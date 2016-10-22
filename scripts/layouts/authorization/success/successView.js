@@ -31,8 +31,10 @@ export default class SuccessView extends BaseLayout {
 
 	render() {
 		return (
-			<div className="ui container">
-				Login successful
+			<div className="card card-main">
+				<div className="card-main-description">
+					<span className="c-success">Login successful</span>
+				</div>
 			</div>
 		);
 	}

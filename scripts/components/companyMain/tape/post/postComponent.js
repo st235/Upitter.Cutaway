@@ -101,6 +101,8 @@ class PostComponent extends BaseLayout {
 					onLike={ this.onLike.bind(this, post.get('customId')) }
 					onAddToFavorites={ this.onAddToFavorites.bind(this, post.get('customId')) }
 				/>
+
+				{/* post-comments Показывать только после нажатия на иконку комментариев */}
 				<CommentsManager
 					comments={ currentPostComments }
 					commentsAmount={ post.get('commentsAmount') }

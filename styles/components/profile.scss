@@ -7,28 +7,36 @@
     margin: -30px -30px 0 -30px;
 }
 .profile-header_bg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 145px;
+    position: relative;
     background-size: cover;
     border-radius: 5px 5px 0 0;
-    &:after {
-        content: '';
+    height: 170px;
+    width: auto;
+    margin: -10px;
+    top: -20px;
+    margin-bottom: 85px;
+    overflow: hidden;
+    .profile-background {
         position: absolute;
         left: 0;
-        top: 0;
+        top: 10px;
         width: 100%;
         height: 100%;
-        background: rgba(255,255,255,.4);
+        filter: blur(5px);
+        filter: blur(5px) brightness(1.1);
+        opacity: .6;
+        background-size: cover;
+        background-position: center center;
     }
 }
 .profile-header_ava {
-    position: relative;
-    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
     img {
-        margin: 60px 0 0;
+        margin: 65px 0 0;
         width: 170px;
         border-radius: 8px;
         border: 3px solid #fff;

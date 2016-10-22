@@ -17,8 +17,15 @@ class CommentComponent extends BaseLayout {
 	render() {
 		const { comment, onChoseReplyTo } = this.props;
 		return (
-			<div className="comment" onClick={ this.onClick(comment) }>
-				<p>{ comment.text }</p>
+			<div className="comment-item has-ava" onClick={ this.onClick(comment) }>
+				<div className="comment-item-header">
+					<img className="user-ava" src={ comment.authorAvatar } />
+					<div className="comment-item-name">{ comment.authorName }</div>
+					<div className="comment-item-date">{ comment.date }</div>
+				</div>
+				<div className="comment-item-body">
+					{ comment.text }
+				</div>
 			</div>
 		);
 	}

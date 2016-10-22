@@ -2,3 +2,31 @@
   text-align: center;
   margin-top: -20px;
 }
+
+$marker-width: 40px;
+.map-marker {
+  position: absolute;
+  left: -$marker-width / 2;
+  top: -$marker-width / 2;
+  width: $marker-width;
+  height: $marker-width;
+	text-align: center;
+  .map-marker-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+  }
+  .map-marker-name {
+    position: absolute;
+    top: -1.4em;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    font-size: .87rem;
+    color: rgba(0,0,0,.7);
+    text-shadow: 0 0 6px #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

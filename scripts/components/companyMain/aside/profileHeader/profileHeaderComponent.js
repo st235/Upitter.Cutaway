@@ -15,11 +15,13 @@ class ProfileHeaderComponent extends BaseLayout {
 	render() {
 		const { company } = this.store.getState();
 		const styles = {
-			backgroundImage: 'url("./images/logo_company.png")'
+			backgroundImage: `url("${company.logoUrl}")`
 		};
 		return (
 			<div className="profile-header">
-				<div className="profile-header_bg" style={ styles }></div>
+				<div className="profile-header_bg">
+					<div className="profile-background" style={ styles }></div>
+				</div>
 				<div className="profile-header_ava"><img src={ company.logoUrl } alt="ava" /></div>
 			</div>
 		);

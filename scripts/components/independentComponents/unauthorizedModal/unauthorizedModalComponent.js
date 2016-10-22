@@ -13,12 +13,18 @@ class ProfileContent extends BaseLayout {
 		if (!showUnauthorized) return null;
 
 		return (
-			<Modal isOpen={ showUnauthorized } >
-				<span onClick={ closeModal }>ЗАКРЫТЬ МОДАЛКУ</span>
-				<div><button><a href="http://localhost:5000/authorization/twitter/web">Twitter</a></button></div>
-				<div><button><a href="http://localhost:5000/authorization/vk/web">Vk</a></button></div>
-				<div><button><a href="http://localhost:5000/authorization/facebook/web">Facebook</a></button></div>
-				<div><button><a href="http://localhost:5000/authorization/google/web">Google</a></button></div>
+			<Modal isOpen={ showUnauthorized } overlayClassName="modal-overlay" className="modal-standart" >
+				<div className="modal-header">
+					<div className="modal-title">Войти</div>
+					<div className="modal-close" onClick={ closeModal }></div>
+				</div>
+
+				<div className="group-btn social-btn">
+					<a href="http://localhost:5000/authorization/twitter/web" className="btn btn-block social-icon social-icon--twitter">Twitter</a>
+					<a href="http://localhost:5000/authorization/vk/web" className="btn btn-block social-icon social-icon--vk">Vk</a>
+					<a href="http://localhost:5000/authorization/facebook/web" className="btn btn-block social-icon social-icon--facebook">Facebook</a>
+					<a href="http://localhost:5000/authorization/google/web" className="btn btn-block social-icon social-icon--google">Google</a>
+				</div>
 			</Modal>
 		);
 	}

@@ -25,7 +25,7 @@ class CommentsManagerComponent extends BaseLayout {
 	generateComments() {
 		const { comments, onChoseReplyTo } = this.props;
 
-		if (!comments || !comments.size) return <p>Комментарии отсутствуют</p>;
+		if (!comments || !comments.size) return <span>Комментарии отсутствуют</span>;
 
 		return comments.map((comment, index) => <Comment key={ index } comment={ comment } onChoseReplyTo={ onChoseReplyTo } />);
 	}
@@ -36,16 +36,16 @@ class CommentsManagerComponent extends BaseLayout {
 		const lastCommentId = comments ? comments.get(postId).last().customId : null;
 
 		return (
-			<div className="comments-manager">
+			<div className="post-comments">
 				<CommentsLoader
 					onLoadMore={ onLoadMore }
 					commentsAmount={ commentsAmount }
 					currentCommentsAmount={ currentCommentsAmount }
 					lastCommentId={ lastCommentId }
 				/>
-				<ul>
+				<div className="comments-list">
 					{ this.generateComments() }
-				</ul>
+				</div>
 				<AddComment
 					onPublishComment={ onPublishComment }
 					replyTo={ this.state.authorId }
