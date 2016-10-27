@@ -16,7 +16,6 @@ class SocialIconsComponent extends BaseLayout {
 
 	generateSocialLinks(socialArr) {
 		if (!socialArr || !socialArr.length) return null;
-		console.log(socialArr);
 
 		return _.map(socialArr, (network, index) => {
 			if (!network.link || !network.icon) return null;

@@ -13,7 +13,6 @@ export default class FailureView extends BaseLayout {
 
 	render() {
 		const { alias } = this.props.params;
-		console.log(this.props);
 
 		return (
 			<div className="card card-main">

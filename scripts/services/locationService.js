@@ -24,4 +24,8 @@ export default class LocationService {
 	static goToFailureCallback() {
 		browserHistory.push('/authorization/failure');
 	}
+
+	static goTo404(alias) {
+		browserHistory.push(`/404/${alias}`);
+	}
 }

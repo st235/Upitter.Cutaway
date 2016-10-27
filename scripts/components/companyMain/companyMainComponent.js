@@ -5,7 +5,7 @@ import BaseLayout from '../baseLayout/baseLayout';
 
 import { ADD_COMPANY, UPDATE_COMPANY_CATEGORIES } from '../../actions/companyActions';
 
-import ErrorService from '../../services/errorService';
+import LocationService from '../../services/locationService';
 
 class CompanyMainComponent extends BaseLayout {
 	componentDidMount() {
@@ -16,7 +16,7 @@ class CompanyMainComponent extends BaseLayout {
 				this.store.dispatch(ADD_COMPANY(result.response));
 				return result.response.activity;
 			}
-			ErrorService.generateStandardError();
+			LocationService.goTo404(alias);
 		}).then(activity => {
 			if (activity && activity.length) {
 				return this.request.getCategoryNames(activity).then(result => {

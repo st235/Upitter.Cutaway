@@ -24,7 +24,7 @@ export default (
 		<IndexRoute component={ MainView } />
 		<Route path="/authorization/success" component={ SuccessView } onEnter={ successLoginRouteEntered } />
 		<Route path="/authorization/failure" component={ FailureView } />
-		<Route path="/404/:alias" component={ View404 }/>
+		<Route path="/404/:alias" component={ View404 } />
 		<Route path="/:alias" component={ CompanyView } onEnter={ routesSaver } />
 		<Redirect from="*" to="/" />
 	</Route>
