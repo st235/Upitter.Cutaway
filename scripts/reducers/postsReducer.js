@@ -56,6 +56,13 @@ const PostsReducer = (state = new List(), action) => {
 		}
 
 		return replacePostWith(state, foundPostInfo.index, foundPostInfo.post);
+	case 'TOGGLE_COMMENTS':
+		const postIdToShowComments = action.postId;
+		const postInfoToShowComments = findPostById(state, postIdToShowComments);
+
+		postInfoToShowComments.post.showComments = !postInfoToShowComments.post.showComments;
+
+		return replacePostWith(state, postInfoToShowComments.index, postInfoToShowComments.post);
 	default:
 		return state;
 	}

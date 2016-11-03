@@ -9,7 +9,7 @@ import PostFooter from './postFooter/postFooterComponent';
 import CommentsManager from './commentsManager/commentsManagerComponent';
 
 import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
-import { VOTE, LIKE, ADD_TO_FAVORITES } from '../../../../actions/postsActions';
+import { VOTE, LIKE, ADD_TO_FAVORITES, TOGGLE_COMMENTS } from '../../../../actions/postsActions';
 import { OPEN_SHOW_ON_MAP } from '../../../../actions/showOnMapActions';
 
 class PostComponent extends BaseLayout {
@@ -69,8 +69,8 @@ class PostComponent extends BaseLayout {
 		});
 	}
 
-	onShowComments(commentsAmount) {
-		console.log(`showComments ${commentsAmount}`);
+	onShowComments(postId) {
+		this.store.dispatch(TOGGLE_COMMENTS(postId));
 	}
 
 	render() {
@@ -97,13 +97,13 @@ class PostComponent extends BaseLayout {
 				/>
 				<PostFooter
 					post={ post }
-					onShowComments={ this.onShowComments }
+					onShowComments={ this.onShowComments.bind(this, post.get('customId')) }
 					onLike={ this.onLike.bind(this, post.get('customId')) }
 					onAddToFavorites={ this.onAddToFavorites.bind(this, post.get('customId')) }
 				/>
 
-				{/* post-comments Показывать только после нажатия на иконку комментариев */}
 				<CommentsManager
+					showComments={ post.get('showComments') }
 					comments={ currentPostComments }
 					commentsAmount={ post.get('commentsAmount') }
 				/>

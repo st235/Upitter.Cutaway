@@ -31,9 +31,11 @@ class CommentsManagerComponent extends BaseLayout {
 	}
 
 	render() {
-		const { comments, commentsAmount, postId, onPublishComment, onLoadMore } = this.props;
+		const { showComments, comments, commentsAmount, postId, onPublishComment, onLoadMore } = this.props;
 		const currentCommentsAmount = (comments && commentsAmount && comments.size) ? commentsAmount - comments.size : 0;
 		const lastCommentId = comments ? comments.get(postId).last().customId : null;
+
+		if (!showComments) return null;
 
 		return (
 			<div className="post-comments">

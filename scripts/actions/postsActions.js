@@ -30,5 +30,12 @@ const ADD_TO_FAVORITES = (postId, userId) => {
 	};
 };
 
-export { ADD_POSTS, VOTE, LIKE, ADD_TO_FAVORITES };
-export default { ADD_POSTS, VOTE, LIKE, ADD_TO_FAVORITES };
+const TOGGLE_COMMENTS = postId => {
+	return {
+		type: 'TOGGLE_COMMENTS',
+		postId
+	};
+};
+
+export { ADD_POSTS, VOTE, LIKE, ADD_TO_FAVORITES, TOGGLE_COMMENTS };
+export default { ADD_POSTS, VOTE, LIKE, ADD_TO_FAVORITES, TOGGLE_COMMENTS };

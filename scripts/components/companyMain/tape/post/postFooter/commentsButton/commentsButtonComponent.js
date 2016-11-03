@@ -5,14 +5,6 @@ import React from 'react';
 import BaseLayout from '../../../../../baseLayout/baseLayout';
 
 class PostHeaderComponent extends BaseLayout {
-	onBind() {
-
-	}
-
-	onCreate() {
-
-	}
-
 	render() {
 		const { commentsAmount, onShowComments } = this.props;
 		return (
