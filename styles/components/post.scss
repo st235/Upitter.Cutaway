@@ -151,6 +151,18 @@
         font-weight: 700;
         margin-left: 5px;
     }
+    &.is-active {
+        background: #ffefef;
+        .action-icon {
+            background-position-y: -27px;
+        }
+        .counter {
+            color: #ff6064;
+        }
+        &:hover {
+            background: #ffdfdf;
+        }
+    }
     &:hover {
         background: #eff1f4;
         .counter {
