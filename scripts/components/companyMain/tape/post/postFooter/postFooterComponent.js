@@ -9,14 +9,6 @@ import FavoriteButton from './favoriteButton/favoriteButtonComponent';
 import LikeButton from './likeButton/likeButtonComponent';
 
 class PostFooterComponent extends BaseLayout {
-	onBind() {
-
-	}
-
-	onCreate() {
-
-	}
-
 	render() {
 		const { post, onShowComments, onLike, onAddToFavorites } = this.props;
 

@@ -25,28 +25,32 @@ const PostsReducer = (state = new List(), action) => {
 		post.isVotedByMe = true;
 		return replacePostWith(state, index, post);
 	case 'LIKE':
-		const postInfo = findPostById(state, action.postId);
+		const postId = action.postId;
+		const userId = action.userId.toString();
+		const postInfo = findPostById(state, postId);
 
-		if (postInfo.post.likeVoters && postInfo.post.likeVoters.length && (postInfo.post.likeVoters.indexOf(action.userId) > -1)) {
-			postInfo.post.likeVoters = _.without(postInfo.post.likeVoters, action.userId);
+		if (postInfo.post.likeVoters && postInfo.post.likeVoters.length && (postInfo.post.likeVoters.indexOf(userId) > -1)) {
+			postInfo.post.likeVoters = _.without(postInfo.post.likeVoters, userId);
 			postInfo.post.likesAmount--;
 			postInfo.post.isLikedByMe = false;
 		} else {
-			postInfo.post.likeVoters.push(action.userId);
+			postInfo.post.likeVoters.push(userId);
 			postInfo.post.likesAmount++;
 			postInfo.post.isLikedByMe = true;
 		}
 
 		return replacePostWith(state, postInfo.index, postInfo.post);
 	case 'ADD_TO_FAVORITES':
-		const foundPostInfo = findPostById(state, action.postId);
+		const foundPostId = action.postId;
+		const foundUserId = action.userId.toString();
+		const foundPostInfo = findPostById(state, foundPostId);
 
-		if (foundPostInfo.post.favoriteVoters && foundPostInfo.post.favoriteVoters.length && (foundPostInfo.post.favoriteVoters.indexOf(action.userId) > -1)) {
-			foundPostInfo.post.favoriteVoters = _.without(foundPostInfo.post.favoriteVoters, action.userId);
+		if (foundPostInfo.post.favoriteVoters && foundPostInfo.post.favoriteVoters.length && (foundPostInfo.post.favoriteVoters.indexOf(foundUserId) > -1)) {
+			foundPostInfo.post.favoriteVoters = _.without(foundPostInfo.post.favoriteVoters, foundUserId);
 			foundPostInfo.post.favoritesAmount--;
 			foundPostInfo.post.isFavoriteByMe = false;
 		} else {
-			foundPostInfo.post.favoriteVoters.push(action.userId);
+			foundPostInfo.post.favoriteVoters.push(foundUserId);
 			foundPostInfo.post.favoritesAmount++;
 			foundPostInfo.post.isFavoriteByMe = true;
 		}

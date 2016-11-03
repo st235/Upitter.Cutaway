@@ -32,7 +32,7 @@ class SubscribeButtonComponent extends BaseLayout {
 			'btn--line': true,
 			'btn--success': true,
 			'btn--counter': true,
-			'active': isMySubscription
+			'is-active': isMySubscription
 		});
 
 		return (

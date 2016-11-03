@@ -14,9 +14,8 @@ class LikeButton extends BaseLayout {
 		const { isLikedByMe } = this.props;
 
 		return cn({
-			'action-icon': true,
-			'action-icon--like': true,
-			'active': isLikedByMe
+			'action-btn': true,
+			'is-active': isLikedByMe
 		});
 	}
 
@@ -26,8 +25,8 @@ class LikeButton extends BaseLayout {
 		const customId =  user ? user.customId : null;
 
 		return (
-			<div className="action-btn" onClick={ onLike.bind(this, customId) }>
-				<div className={ this.generateClassNames() }></div>
+			<div className={ this.generateClassNames() } onClick={ onLike.bind(this, customId) }>
+				<div className="action-icon action-icon--like"></div>
 				<div className="counter">{ likesAmount }</div>
 			</div>
 		);
