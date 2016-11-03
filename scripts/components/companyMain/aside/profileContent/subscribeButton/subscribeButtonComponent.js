@@ -39,7 +39,11 @@ class SubscribeButtonComponent extends BaseLayout {
 			//TODO: Что делать, если подписан?
 			<div className="profile-follow">
 				<div className={ classNames } onClick={ this.onToggleSubscriptionSubscribe(customId) }>
-					{ this.localeService.getLocalizedNameFor('subscribe') }
+					{ isMySubscription
+						?
+						this.localeService.getLocalizedNameFor('unsubscribe')
+						:
+						this.localeService.getLocalizedNameFor('subscribe') }
 					<span>{ subscribersAmount }</span>
 				</div>
 			</div>
