@@ -7,6 +7,7 @@ import ErrorService from '../../services/errorService';
 import LocaleService from '../../services/localeService';
 import UserService from '../../services/userService';
 import LocationService from '../../services/locationService';
+import ReportsService from '../../services/reportsService';
 
 import ApiUtils from '../../utils/apiUtils';
 
@@ -56,5 +57,9 @@ export default class BaseLayout extends Component {
 
 	get locationService() {
 		return LocationService;
+	}
+
+	get reportsService() {
+		return ReportsService;
 	}
 }

@@ -96,6 +96,20 @@ export default {
 		});
 	},
 
+	createReport(reasonId, targetId) {
+		return AjaxService.sendPost(`${methodsConfig.reports.create}`, { reasonId, targetId }, 'CREATE_REPORT').then(result => {
+			if (!result.success) ErrorService.setError(errorTypesConfig.CREATE_REPORT);
+			return result;
+		});
+	},
+
+	getReportReasons(type = 'all') {
+		return AjaxService.sendGet(`${methodsConfig.reports.obtainReasons}/${type}`, {}, 'GET_REASONS').then(result => {
+			if (!result.success) ErrorService.setError(errorTypesConfig.UNKNOWN_ERROR);
+			return result;
+		});
+	},
+
 	// TODO: IMPLEMENT
 
 	search(query) {}

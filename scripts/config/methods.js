@@ -31,6 +31,11 @@ export default {
 		obtainTitles: `${baseServerUrl}/categories/obtainTitles`
 	},
 
+	reports: {
+		create: `${baseServerUrl}/report/create`,
+		obtainReasons: `${baseServerUrl}/report/reasons`
+	},
+
 	external: {
 		vk: 'https://oauth.vk.com/authorize?client_id=5624119&redirect_uri=https://oauth.vk.com/blank.html&scope=12&display=popup'
 	}

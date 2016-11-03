@@ -59,5 +59,10 @@ export default {
 	[errorTypesConfig.GET_USER_PROFILE]: {
 		ru: 'Не удалось получить информацию о пользователе',
 		en: 'Unable to get user information'
+	},
+
+	[errorTypesConfig.CREATE_REPORT]: {
+		ru: 'Не удалось пожаловаться. Перезагрузите страницу и попробуйте еще раз',
+		en: 'Unable to send report. Reload the page and try one more time'
 	}
 };

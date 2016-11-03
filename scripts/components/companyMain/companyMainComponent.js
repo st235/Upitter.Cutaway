@@ -25,7 +25,13 @@ class CompanyMainComponent extends BaseLayout {
 					}
 				});
 			}
-		})
+		}).then(() => {
+			return this.request.getReportReasons().then(result => {
+				if (result.success) {
+					this.reportsService.init(result.response);
+				}
+			});
+		});
 	}
 
 	render() {
