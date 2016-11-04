@@ -11,12 +11,9 @@ import CommentsManager from './commentsManager/commentsManagerComponent';
 import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
 import { VOTE, LIKE, ADD_TO_FAVORITES, TOGGLE_COMMENTS } from '../../../../actions/postsActions';
 import { OPEN_SHOW_ON_MAP } from '../../../../actions/showOnMapActions';
+import { TOGGLE_REPORT_DIALOG } from '../../../../actions/reportsActions';
 
 class PostComponent extends BaseLayout {
-	onBind() {
-
-	}
-
 	onMenuOpened(postId, e) {
 		e.stopPropagation();
 
@@ -39,8 +36,8 @@ class PostComponent extends BaseLayout {
 		));
 	}
 
-	onReport(postId) {
-		console.log('onReport: ', postId);
+	onReport(post) {
+		this.store.dispatch(TOGGLE_REPORT_DIALOG(post));
 	}
 
 	onShare(postId) {

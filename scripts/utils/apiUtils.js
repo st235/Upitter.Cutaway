@@ -97,7 +97,11 @@ export default {
 	},
 
 	createReport(reasonId, targetId) {
-		return AjaxService.sendPost(`${methodsConfig.reports.create}`, { reasonId, targetId }, 'CREATE_REPORT').then(result => {
+		targetId = targetId.toString();
+		const accessToken = UserService.getAccessToken();
+		if (!accessToken) return unauthorizedUtils.showUnauthorized();
+
+		return AjaxService.sendPost(`${methodsConfig.reports.create}`, { accessToken, reasonId, targetId }, 'CREATE_REPORT').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.CREATE_REPORT);
 			return result;
 		});

@@ -46,5 +46,13 @@ export default {
 	categorySpecial: {
 		ru: 'Специальное предложение',
 		en: 'Special'
+	},
+	reportModalHeader: {
+		ru: 'Написать жалобу',
+		en: 'Create report'
+	},
+	reportButton: {
+		ru: 'Пожаловаться',
+		en: 'Report'
 	}
 };

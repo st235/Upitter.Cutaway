@@ -25,4 +25,20 @@ export default class ReportsService {
 			}
 		});
 	}
+
+	static get allReasons() {
+		return this.reasons;
+	}
+
+	static getPostReasons() {
+		return this.postReasons;
+	}
+
+	static getCommentReasons() {
+		return this.commentReasons;
+	}
+
+	static getCompanyReasons() {
+		return this.companyReasons;
+	}
 }
