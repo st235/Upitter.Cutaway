@@ -51,6 +51,11 @@ export default {
 		en: 'Unable to post a comment'
 	},
 
+	[errorTypesConfig.GET_COMMENT_ERROR]: {
+		ru: 'Не удалось получить список комментариев',
+		en: 'Unable to get comments list'
+	},
+
 	[errorTypesConfig.UNABLE_TO_AUTHORIZE]: {
 		ru: 'Не удалось авторизоваться',
 		en: 'Unable to authorize'

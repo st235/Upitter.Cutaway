@@ -86,11 +86,27 @@ export default {
 		});
 	},
 
-	comment(alias) {
+	getComments(postId, commentId, type = 'old') {
+		const accessToken = UserService.getAccessToken();
+
+		const query = {
+			accessToken: accessToken || '',
+			postId,
+			commentId,
+			type
+		};
+
+		return AjaxService.sendGet(`${methodsConfig.comment.obtain}`, query, 'COMMENT').then(result => {
+			if (!result.success) ErrorService.setError(errorTypesConfig.GET_COMMENT_ERROR);
+			return result;
+		});
+	},
+
+	comment(postId, text) {
 		const accessToken = UserService.getAccessToken();
 		if (!accessToken) return unauthorizedUtils.showUnauthorized();
 
-		return AjaxService.sendGet(`${methodsConfig.company.findByAlias}/${alias}`, { accessToken }, 'COMMENT').then(result => {
+		return AjaxService.sendPost(`${methodsConfig.comment.addComment}`, { accessToken, postId, text }, 'ADD_COMMENT').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.COMMENT_ERROR);
 			return result;
 		});
