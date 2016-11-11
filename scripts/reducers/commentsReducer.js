@@ -17,13 +17,18 @@ function addComments(commentsMap, postId, newCommentsArr) {
 	return setCommentsListByPostId(commentsMap, postId, commentsList.merge(newCommentsArr));
 }
 
+function addComment(commentsMap, postId, newComment) {
+	const commentsList = getCommentsListByPostId(commentsMap, postId);
+	if (!commentsList || !commentsList.size) return setCommentsListByPostId(commentsMap, postId, new List([newComment]));
+	return setCommentsListByPostId(commentsMap, postId, commentsList.push(newComment));
+}
+
 const CommentsReducer = (state = new Map(), action) => {
 	switch (action.type) {
 	case 'ADD_COMMENTS':
 		return addComments(state, action.postId, action.comments);
 	case 'ADD_NEW_COMMENT':
-		// return addComments(state, action.postId, action.comments);
-		return state;
+		return addComment(state, action.postId, action.comment);
 	case 'EDIT_COMMENT':
 		return state;
 	case 'DELETE_COMMENT':

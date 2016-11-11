@@ -9,9 +9,10 @@ import PostFooter from './postFooter/postFooterComponent';
 import CommentsManager from './commentsManager/commentsManagerComponent';
 
 import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
-import { VOTE, LIKE, ADD_TO_FAVORITES, TOGGLE_COMMENTS } from '../../../../actions/postsActions';
+import { VOTE, LIKE, ADD_TO_FAVORITES, TOGGLE_COMMENTS, INCREMENT_COMMENTS_AMOUNT } from '../../../../actions/postsActions';
 import { OPEN_SHOW_ON_MAP } from '../../../../actions/showOnMapActions';
 import { TOGGLE_REPORT_DIALOG } from '../../../../actions/reportsActions';
+import { ADD_NEW_COMMENT } from '../../../../actions/commentsActions';
 
 class PostComponent extends BaseLayout {
 	onMenuOpened(postId, e) {
@@ -25,13 +26,14 @@ class PostComponent extends BaseLayout {
 	}
 
 	onShowPostOnMap(post) {
+		const { company } = this.store.getState();
 		const coordinates = post.get('coordinates');
 		const text = post.get('title');
 
 		this.store.dispatch(OPEN_SHOW_ON_MAP(
 			coordinates.latitude,
 			coordinates.longitude,
-			null,
+			company.logoUrl,
 			text
 		));
 	}
@@ -50,14 +52,14 @@ class PostComponent extends BaseLayout {
 		});
 	}
 
-	onImageClicked(postId, image) {
-
-	}
-
 	onAddToFavorites(postId, userId) {
 		this.request.addToFavorites(postId).then(() => {
 			this.store.dispatch(ADD_TO_FAVORITES(postId, userId));
 		});
+	}
+
+	onImageClicked(postId) {
+		console.log(postId);
 	}
 
 	onLike(postId, userId) {
@@ -66,8 +68,21 @@ class PostComponent extends BaseLayout {
 		});
 	}
 
+	onPublishComment(postId, text) {
+		return this.request.comment(postId, text).then(result => {
+			if (result.success) {
+				this.store.dispatch(ADD_NEW_COMMENT(postId, result.response));
+				this.store.dispatch(INCREMENT_COMMENTS_AMOUNT(postId));
+			}
+		});
+	}
+
 	onShowComments(postId) {
 		this.store.dispatch(TOGGLE_COMMENTS(postId));
+	}
+
+	onLoadMoreComments(postId, commentId) {
+
 	}
 
 	render() {
@@ -89,20 +104,22 @@ class PostComponent extends BaseLayout {
 				/>
 				<PostContent
 					post={ post }
-					onVote={ this.onVote.bind(this, post.get('customId')) }
-					onImageClicked={ this.onImageClicked.bind(this, post.get('customId')) }
+					onVote={ this.onVote.bind(this, postId) }
+					onImageClicked={ this.onImageClicked.bind(this, postId) }
 				/>
 				<PostFooter
 					post={ post }
-					onShowComments={ this.onShowComments.bind(this, post.get('customId')) }
-					onLike={ this.onLike.bind(this, post.get('customId')) }
-					onAddToFavorites={ this.onAddToFavorites.bind(this, post.get('customId')) }
+					onShowComments={ this.onShowComments.bind(this, postId) }
+					onLike={ this.onLike.bind(this, postId) }
+					onAddToFavorites={ this.onAddToFavorites.bind(this, postId) }
 				/>
 
 				<CommentsManager
 					showComments={ post.get('showComments') }
 					comments={ currentPostComments }
 					commentsAmount={ post.get('commentsAmount') }
+					onPublishComment={ this.onPublishComment.bind(this, postId.toString()) }
+					onLoadMore={ this.onLoadMoreComments.bind(this, postId) }
 				/>
 			</div>
 		);

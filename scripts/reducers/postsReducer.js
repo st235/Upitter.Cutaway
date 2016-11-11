@@ -6,6 +6,7 @@ import _ from 'underscore';
 function findPostById(list, postId) {
 	const post = list.find(item => item.customId === postId);
 	const index = list.indexOf(post);
+
 	return { post, index };
 }
 
@@ -63,6 +64,11 @@ const PostsReducer = (state = new List(), action) => {
 		postInfoToShowComments.post.showComments = !postInfoToShowComments.post.showComments;
 
 		return replacePostWith(state, postInfoToShowComments.index, postInfoToShowComments.post);
+	case 'INCREMENT_COMMENTS_AMOUNT':
+		const postInfoToIncrementCommentsCount = findPostById(state, parseInt(action.postId));
+		postInfoToIncrementCommentsCount.post.commentsAmount++;
+
+		return replacePostWith(state, postInfoToIncrementCommentsCount.index, postInfoToIncrementCommentsCount.post);
 	default:
 		return state;
 	}

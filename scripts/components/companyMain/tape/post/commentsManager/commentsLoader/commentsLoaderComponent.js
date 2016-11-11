@@ -23,5 +23,3 @@ class CommentLoaderComponent extends BaseLayout {
 }
 
 export default CommentLoaderComponent;
-
-

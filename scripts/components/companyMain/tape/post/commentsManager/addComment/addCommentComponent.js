@@ -6,7 +6,10 @@ import BaseLayout from '../../../../../baseLayout/baseLayout';
 
 class AddCommentComponent extends BaseLayout {
 	onCreate() {
-		this.state = { value: '' };
+		this.state = {
+			value: '',
+			isDisabled: true
+		};
 	}
 	onBind() {
 		this.onChange = this.onChange.bind(this);
@@ -14,23 +17,33 @@ class AddCommentComponent extends BaseLayout {
 	}
 
 	onChange(e) {
-		this.setState({value: e.target.value});
+		const value = e.target.value;
+		this.setState({
+			value,
+			isDisabled: !(value && value.length && value.length > 3)
+		});
 	}
 
 	onPublish() {
-		const { onPublishComment, replyTo } = this.props;
-		onPublishComment(this.state.value, replyTo);
+		const { onPublishComment } = this.props;
+
+		onPublishComment(this.state.value).then(() => {
+			this.setState({
+				value: '',
+				isDisabled: true
+			});
+		});
 	}
 
 	render() {
 		return (
 			<div className="comment-footer">
-				<form className="comment-form">
+				<div className="comment-form">
 					<input type="text" onChange={ this.onChange } className="form-control" placeholder="Комментировать.." value={ this.state.value } />
 					<div className="input-group-btn">
-						<button className="btn" onClick={ this.onPublish }>Комментировать</button>
+						<button  disabled={ this.state.isDisabled } className="btn" onClick={ this.onPublish }>{ this.localeService.getLocalizedNameFor("addComment") }</button>
 					</div>
-				</form>
+				</div>
 			</div>
 		);
 	}

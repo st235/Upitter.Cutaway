@@ -54,5 +54,9 @@ export default {
 	reportButton: {
 		ru: 'Пожаловаться',
 		en: 'Report'
+	},
+	addComment: {
+		ru: 'Комментировать',
+		en: 'Add comment'
 	}
 };
