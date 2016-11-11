@@ -26,7 +26,7 @@ class AddCommentComponent extends BaseLayout {
 		return (
 			<div className="comment-footer">
 				<form className="comment-form">
-					<input type="text" className="form-control" placeholder="Комментировать.." value={ this.state.value } />
+					<input type="text" onChange={ this.onChange } className="form-control" placeholder="Комментировать.." value={ this.state.value } />
 					<div className="input-group-btn">
 						<button className="btn" onClick={ this.onPublish }>Комментировать</button>
 					</div>
