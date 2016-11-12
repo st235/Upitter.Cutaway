@@ -14,7 +14,7 @@ function addComments(commentsMap, postId, newCommentsArr) {
 	if (!newCommentsArr || !newCommentsArr.length) return commentsMap;
 	const commentsList = getCommentsListByPostId(commentsMap, postId);
 	if (!commentsList || !commentsList.size) return setCommentsListByPostId(commentsMap, postId, new List(newCommentsArr));
-	return setCommentsListByPostId(commentsMap, postId, commentsList.merge(newCommentsArr));
+	return setCommentsListByPostId(commentsMap, postId, commentsList.push(...newCommentsArr));
 }
 
 function addComment(commentsMap, postId, newComment) {
@@ -28,7 +28,7 @@ const CommentsReducer = (state = new Map(), action) => {
 	case 'ADD_COMMENTS':
 		return addComments(state, action.postId, action.comments);
 	case 'ADD_NEW_COMMENT':
-		return addComment(state, action.postId, action.comment);
+		return addComment(state, parseInt(action.postId), action.comment);
 	case 'EDIT_COMMENT':
 		return state;
 	case 'DELETE_COMMENT':

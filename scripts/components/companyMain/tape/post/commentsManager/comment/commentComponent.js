@@ -19,9 +19,13 @@ class CommentComponent extends BaseLayout {
 		return (
 			<div className="comment-item has-ava" onClick={ this.onClick(comment) }>
 				<div className="comment-item-header">
-					<img className="user-ava" src={ comment.authorAvatar } />
-					<div className="comment-item-name">{ comment.authorName }</div>
-					<div className="comment-item-date">{ comment.date }</div>
+					<img className="user-ava" src={
+						comment.author ? comment.author.avatarUrl : null
+					} />
+					<div className="comment-item-name">{
+						comment.author ? comment.author.name : null
+					}</div>
+					<div className="comment-item-date">{ this.moment(comment.date).fromNow() }</div>
 				</div>
 				<div className="comment-item-body">
 					{ comment.text }

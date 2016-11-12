@@ -96,7 +96,7 @@ export default {
 			type
 		};
 
-		return AjaxService.sendGet(`${methodsConfig.comment.obtain}`, query, 'COMMENT').then(result => {
+		return AjaxService.sendGet(`${methodsConfig.comment.obtain}`, query, 'GET_COMMENTS').then(result => {
 			if (!result.success) ErrorService.setError(errorTypesConfig.GET_COMMENT_ERROR);
 			return result;
 		});

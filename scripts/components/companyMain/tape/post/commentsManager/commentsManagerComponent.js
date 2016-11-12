@@ -27,13 +27,15 @@ class CommentsManagerComponent extends BaseLayout {
 
 		if (!comments || !comments.size) return <span>Комментарии отсутствуют</span>;
 
-		return comments.map((comment, index) => <Comment key={ index } comment={ comment } onChoseReplyTo={ onChoseReplyTo } />);
+		return comments
+			.sort((commentOne, commentTwo) => commentOne.customId > commentTwo.customId)
+			.map((comment, index) => <Comment key={ index } comment={ comment } onChoseReplyTo={ onChoseReplyTo } />);
 	}
 
 	render() {
 		const { showComments, comments, commentsAmount, postId, onPublishComment, onLoadMore } = this.props;
-		const currentCommentsAmount = (comments && commentsAmount && comments.size) ? commentsAmount - comments.size : 0;
-		const lastCommentId = comments ? comments.get(postId).last().customId : null;
+		const currentCommentsAmount = (comments && comments.size) ? comments.size : 0;
+		const lastCommentId = comments ? comments.last().customId : null;
 
 		if (!showComments) return null;
 

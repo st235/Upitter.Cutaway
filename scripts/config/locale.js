@@ -58,5 +58,13 @@ export default {
 	addComment: {
 		ru: 'Комментировать',
 		en: 'Add comment'
+	},
+	loadMore: {
+		ru: 'Загрузить еще',
+		en: 'Load additional'
+	},
+	comments: {
+		ru: 'комментариев',
+		en: 'comments'
 	}
 };

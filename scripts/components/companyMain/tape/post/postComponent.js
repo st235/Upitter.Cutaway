@@ -12,7 +12,7 @@ import { TOGGLE_MENU_OPENED } from '../../../../actions/optionalMenuActions';
 import { VOTE, LIKE, ADD_TO_FAVORITES, TOGGLE_COMMENTS, INCREMENT_COMMENTS_AMOUNT } from '../../../../actions/postsActions';
 import { OPEN_SHOW_ON_MAP } from '../../../../actions/showOnMapActions';
 import { TOGGLE_REPORT_DIALOG } from '../../../../actions/reportsActions';
-import { ADD_NEW_COMMENT } from '../../../../actions/commentsActions';
+import { ADD_NEW_COMMENT, ADD_COMMENTS } from '../../../../actions/commentsActions';
 
 class PostComponent extends BaseLayout {
 	onMenuOpened(postId, e) {
@@ -71,18 +71,27 @@ class PostComponent extends BaseLayout {
 	onPublishComment(postId, text) {
 		return this.request.comment(postId, text).then(result => {
 			if (result.success) {
+				const newComment = result.response;
+				newComment.author = this.userService.getCurrentUser();
 				this.store.dispatch(ADD_NEW_COMMENT(postId, result.response));
 				this.store.dispatch(INCREMENT_COMMENTS_AMOUNT(postId));
 			}
 		});
 	}
 
-	onShowComments(postId) {
+	onShowComments(postId, commentsAmount, loadedCommentsSize) {
 		this.store.dispatch(TOGGLE_COMMENTS(postId));
+		if (loadedCommentsSize > 0 || (loadedCommentsSize === 0 && commentsAmount === 0)) return;
+
+		return this.onLoadMoreComments(postId);
 	}
 
 	onLoadMoreComments(postId, commentId) {
-
+		return this.request.getComments(postId, commentId).then(result => {
+			if (result.success) {
+				this.store.dispatch(ADD_COMMENTS(postId, result.response.comments));
+			}
+		});
 	}
 
 	render() {
@@ -109,7 +118,14 @@ class PostComponent extends BaseLayout {
 				/>
 				<PostFooter
 					post={ post }
-					onShowComments={ this.onShowComments.bind(this, postId) }
+					onShowComments={
+						this.onShowComments.bind(
+							this,
+							postId,
+							post.get('commentsAmount'),
+							currentPostComments ? currentPostComments.size : null
+						)
+					}
 					onLike={ this.onLike.bind(this, postId) }
 					onAddToFavorites={ this.onAddToFavorites.bind(this, postId) }
 				/>
@@ -120,6 +136,7 @@ class PostComponent extends BaseLayout {
 					commentsAmount={ post.get('commentsAmount') }
 					onPublishComment={ this.onPublishComment.bind(this, postId.toString()) }
 					onLoadMore={ this.onLoadMoreComments.bind(this, postId) }
+					postId={ post.get('customId') }
 				/>
 			</div>
 		);
@@ -127,5 +144,3 @@ class PostComponent extends BaseLayout {
 }
 
 export default PostComponent;
-
-

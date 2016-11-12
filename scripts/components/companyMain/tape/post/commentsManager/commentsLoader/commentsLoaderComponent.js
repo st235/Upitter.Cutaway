@@ -5,18 +5,14 @@ import React from 'react';
 import BaseLayout from '../../../../../baseLayout/baseLayout';
 
 class CommentLoaderComponent extends BaseLayout {
-	onBind() {
-
-	}
-
 	render() {
 		const { onLoadMore, commentsAmount, currentCommentsAmount, lastCommentId } = this.props;
 
 		if (commentsAmount === currentCommentsAmount) return null;
 
 		return (
-			<div className="comments-loader btn" onClick={ onLoadMore(lastCommentId) }>
-				Загрузить еще { commentsAmount - currentCommentsAmount } комментариев
+			<div className="comments-loader btn" onClick={ onLoadMore.bind(this, lastCommentId) }>
+				{ this.localeService.getLocalizedNameFor('loadMore') } { commentsAmount - currentCommentsAmount } { this.localeService.getLocalizedNameFor('comments') }
 			</div>
 		);
 	}
