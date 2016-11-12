@@ -47,7 +47,6 @@ class TapeComponent extends BaseLayout {
 			if (result && result.success && result.response && result.response.count) {
 				let posts = result.response.posts;
 
-
 				if (posts || posts.length) {
 					this.lastPostId = posts[posts.length - 1].customId;
 				}
@@ -82,6 +81,7 @@ class TapeComponent extends BaseLayout {
 						items={ this.generatePosts() }
 						loadMore={ this.loadMore }
 						hasMore={ hasMore }
+						showLoader={ false }
 						loadingMore={ this.invoked }
 						holder={"div"}
 					/>

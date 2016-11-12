@@ -36,7 +36,7 @@ class CompanyMainComponent extends BaseLayout {
 
 	render() {
 		const { children } = this.props;
-		
+
 		return (
 			<main className="main">
 				<div className="container">

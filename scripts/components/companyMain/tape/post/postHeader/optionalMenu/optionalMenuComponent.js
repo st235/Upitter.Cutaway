@@ -14,7 +14,6 @@ class OptionalMenuComponent extends BaseLayout {
 				<ul>
 					<li onClick={ onShowOnMap.bind(this, post) }><a>Показать на карте</a></li>
 					<li onClick={ onReport.bind(this, post) }><a>Пожаловаться</a></li>
-					<li onClick={ onShare.bind(this, postId) }><a>Поделиться записью</a></li>
 				</ul>
 			</div>
 		);
@@ -23,4 +22,4 @@ class OptionalMenuComponent extends BaseLayout {
 
 export default OptionalMenuComponent;
 
-
+// <li onClick={ onShare.bind(this, postId) }><a>Поделиться записью</a></li>
