@@ -66,5 +66,17 @@ export default {
 	comments: {
 		ru: 'комментариев',
 		en: 'comments'
+	},
+	notFound: {
+		ru: 'не найдено',
+		en: 'not found'
+	},
+	companyWithAliasNotFound: {
+		ru: 'Компания с псевдонимом или айди',
+		en: 'Company with alias or id'
+	},
+	companyNotFound: {
+		ru: 'не найдена',
+		en: 'is not found'
 	}
 };

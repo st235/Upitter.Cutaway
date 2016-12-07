@@ -31,6 +31,13 @@ class CompanyMainComponent extends BaseLayout {
 					this.reportsService.init(result.response);
 				}
 			});
+		}).then(() => {
+			const accessToken = this.userService.getAccessToken();
+			if (!accessToken) return;
+
+			return this.request.getProfile(accessToken).then(result => {
+				if (!result.success) this.userService.logout();
+			});
 		});
 	}
 

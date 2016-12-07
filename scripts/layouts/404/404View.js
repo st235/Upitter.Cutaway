@@ -8,8 +8,8 @@ export default class View404 extends BaseLayout {
 
 		return (
 			<div className="card card-main">
-				<h1 className="e-404">404 <span>not found :/</span></h1>
-				<div className="card-main-description">Company with alias or id <span>{ alias }</span> is not found.</div>
+				<h1 className="e-404">404 <span>{ this.localeService.getLocalizedNameFor('notFound') } :/</span></h1>
+				<div className="card-main-description">{ this.localeService.getLocalizedNameFor('companyWithAliasNotFound') } <span>{ alias }</span> { this.localeService.getLocalizedNameFor('companyNotFound') }.</div>
 			</div>
 		);
 	}
