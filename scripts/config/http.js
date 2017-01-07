@@ -1,4 +1,4 @@
-const baseServerUrl = 'http://localhost:5000';
-const fileServerUrl = 'http://localhost:5000';
+const baseServerUrl = 'https://upitter.herokuapp.com';
+const fileServerUrl = 'https://upitter.herokuapp.com';
 
 export { baseServerUrl, fileServerUrl };
