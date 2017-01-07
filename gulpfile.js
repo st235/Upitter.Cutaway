@@ -48,7 +48,7 @@ gulp.task('Build_Styles', callback => {
 
 gulp.task('Copy_Images', callback => {
 	ncp(imageOriginFolder, imageDestinationFolder, error => {
-		if (error) gulpUtils.log('[Copy Images]', 'There was an error while copying images');
+		if (error) gulpUtils.log('[Copy Images]', 'There was an error while copying images', error);
 		gulpUtils.log('[Copy Images]', 'Good boy - cowboy');
 		callback();
 	});
@@ -56,7 +56,7 @@ gulp.task('Copy_Images', callback => {
 
 gulp.task('Copy_Fonts', callback => {
 	ncp(fontsOriginFolder, fontsDestinationFolder, error => {
-		if (error) gulpUtils.log('[Copy Fonts]', 'There was an error while copying fonts');
+		if (error) gulpUtils.log('[Copy Fonts]', 'There was an error while copying fonts', error);
 		gulpUtils.log('[Copy Fonts]', 'Good font - cowboy');
 		callback();
 	});

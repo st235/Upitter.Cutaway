@@ -10,22 +10,23 @@ class CommentComponent extends BaseLayout {
 	}
 
 	onClick(comment) {
-		const { onChoseReplyTo } = this.props;
-		return () => onChoseReplyTo(comment);
+		// const { onChoseReplyTo } = this.props;
+		// return () => onChoseReplyTo(comment);
 	}
 
 	render() {
 		const { comment, onChoseReplyTo } = this.props;
+
 		return (
-			<div className="comment-item has-ava" onClick={ this.onClick(comment) }>
+			<div className="comment-item has-ava" >
 				<div className="comment-item-header">
 					<img className="user-ava" src={
-						comment.author ? comment.author.avatarUrl : null
+						comment.author ? comment.author.avatarUrl || comment.author.logoUrl : null
 					} />
 					<div className="comment-item-name">{
 						comment.author ? comment.author.name : null
 					}</div>
-					<div className="comment-item-date">{ this.moment(comment.date).fromNow() }</div>
+					<div className="comment-item-date">{ comment.createdTime } { comment.createdDate }</div>
 				</div>
 				<div className="comment-item-body">
 					{ comment.text }
@@ -35,4 +36,5 @@ class CommentComponent extends BaseLayout {
 	}
 }
 
+// <div className="comment-item-date">{ this.moment(comment.date).fromNow() }</div>
 export default CommentComponent;

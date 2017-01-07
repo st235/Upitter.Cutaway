@@ -20,6 +20,15 @@ class CommentsManagerComponent extends BaseLayout {
 
 	onBind() {
 		this.generateComments = this.generateComments.bind(this);
+		this.scrollBottom = this.scrollBottom.bind(this);
+	}
+
+	scrollBottom() {
+		const { comments } = this.props;
+
+		if (comments && this.commentsList) {
+			this.commentsList.scrollTop = this.commentsList.scrollHeight - this.commentsList.clientHeight;
+		}
 	}
 
 	generateComments() {
@@ -35,7 +44,8 @@ class CommentsManagerComponent extends BaseLayout {
 	render() {
 		const { showComments, comments, commentsAmount, postId, onPublishComment, onLoadMore } = this.props;
 		const currentCommentsAmount = (comments && comments.size) ? comments.size : 0;
-		const lastCommentId = comments ? comments.last().customId : null;
+		const lastCommentId = comments ? comments.first().customId : null;
+		console.log(lastCommentId);
 
 		if (!showComments) return null;
 
@@ -47,11 +57,14 @@ class CommentsManagerComponent extends BaseLayout {
 					currentCommentsAmount={ currentCommentsAmount }
 					lastCommentId={ lastCommentId }
 				/>
-				<div className="comments-list">
+				<div className="comments-list"
+					ref={(commentsList) => { this.commentsList = commentsList; this.scrollBottom(); }}
+				>
 					{ this.generateComments() }
 				</div>
 				<AddComment
 					onPublishComment={ onPublishComment }
+					scrollBottom = { this.scrollBottom }
 					replyTo={ this.state.authorId }
 				/>
 			</div>

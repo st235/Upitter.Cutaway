@@ -25,13 +25,15 @@ class AddCommentComponent extends BaseLayout {
 	}
 
 	onPublish() {
-		const { onPublishComment } = this.props;
+		const { onPublishComment, scrollBottom } = this.props;
 
 		onPublishComment(this.state.value).then(() => {
 			this.setState({
 				value: '',
 				isDisabled: true
 			});
+
+			scrollBottom();
 		});
 	}
 
