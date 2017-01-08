@@ -35,6 +35,27 @@ class PostCategory extends BaseLayout {
 			case 'special':
 				categoryName = 'categorySpecial';
 				break;
+			case 'скидки':
+				categoryName = 'categoryDiscount';
+				break;
+			case 'события':
+				categoryName = 'categoryEvents';
+				break;
+			case 'распродажи':
+				categoryName = 'categorySales';
+				break;
+			case 'вакансии':
+				categoryName = 'categoryHires';
+				break;
+			case 'новости':
+				categoryName = 'categoryNews';
+				break;
+			case 'услуги':
+				categoryName = 'categoryServices';
+				break;
+			case 'особое':
+				categoryName = 'categorySpecial';
+				break;
 		}
 
 		return (
