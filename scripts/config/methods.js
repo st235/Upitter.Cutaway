@@ -13,6 +13,13 @@ export default {
 		toggleSubscription: `${baseServerUrl}/user/toggle_subscription`
 	},
 
+	auth: {
+		vk: `${baseServerUrl}/authorization/vk/web`,
+		twitter: `${baseServerUrl}/authorization/twitter/web`,
+		facebook: `${baseServerUrl}/authorization/facebook/web`,
+		google: `${baseServerUrl}/authorization/google/web`
+	},
+
 	post: {
 		like: `${baseServerUrl}/post/like`,
 		favorite: `${baseServerUrl}/post/favorite`,
