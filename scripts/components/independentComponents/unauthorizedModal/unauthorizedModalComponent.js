@@ -4,6 +4,7 @@ import React from 'react';
 import Modal from 'react-modal';
 
 import BaseLayout from '../../baseLayout/baseLayout';
+import { baseServerUrl } from '../../../config/http';
 
 class ProfileContent extends BaseLayout {
 
@@ -20,10 +21,10 @@ class ProfileContent extends BaseLayout {
 				</div>
 
 				<div className="group-btn social-btn">
-					<a href="http://localhost:5000/authorization/twitter/web" className="btn btn-block social-icon social-icon--twitter">Twitter</a>
-					<a href="http://localhost:5000/authorization/vk/web" className="btn btn-block social-icon social-icon--vk">Vk</a>
-					<a href="http://localhost:5000/authorization/facebook/web" className="btn btn-block social-icon social-icon--facebook">Facebook</a>
-					<a href="http://localhost:5000/authorization/google/web" className="btn btn-block social-icon social-icon--google">Google</a>
+					<a href="http://62.76.179.37:8003/authorization/twitter/web" className="btn btn-block social-icon social-icon--twitter">Twitter</a>
+					<a href="http://62.76.179.37:8003/authorization/vk/web" className="btn btn-block social-icon social-icon--vk">Vk</a>
+					<a href="http://62.76.179.37:8003/authorization/facebook/web" className="btn btn-block social-icon social-icon--facebook">Facebook</a>
+					<a href="http://62.76.179.37:8003/authorization/google/web" className="btn btn-block social-icon social-icon--google">Google</a>
 				</div>
 			</Modal>
 		);
