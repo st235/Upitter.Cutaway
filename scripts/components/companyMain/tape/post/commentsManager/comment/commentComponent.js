@@ -26,7 +26,7 @@ class CommentComponent extends BaseLayout {
 					<div className="comment-item-name">{
 						comment.author ? comment.author.name : null
 					}</div>
-					// <div className="comment-item-date">{ this.moment(comment.timeStamp).fromNow() }</div>
+					<div className="comment-item-date">{ this.moment(comment.timeStamp).fromNow() }</div>
 				</div>
 				<div className="comment-item-body">
 					{ comment.text }

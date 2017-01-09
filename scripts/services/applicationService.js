@@ -7,6 +7,7 @@ import LocaleService from './localeService';
 import LocalStorageService from './localStorageService';
 import UserService from './userService';
 import LocationService from './localeService';
+import moment from 'moment';
 
 import routesConfig from '../config/routes';
 import socialConfig from '../config/social';
@@ -25,6 +26,8 @@ export default class ApplicationService {
 		LocaleService.init();
 		UserService.init(socialConfig.auth);
 		LocationService.init();
+
+		if (LocaleService.getLocale() === 'ru') require('moment/locale/ru');
 
 		this.render();
 	}
