@@ -45,7 +45,6 @@ class CommentsManagerComponent extends BaseLayout {
 		const { showComments, comments, commentsAmount, postId, onPublishComment, onLoadMore } = this.props;
 		const currentCommentsAmount = (comments && comments.size) ? comments.size : 0;
 		const lastCommentId = comments ? comments.first().customId : null;
-		console.log(lastCommentId);
 
 		if (!showComments) return null;
 

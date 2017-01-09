@@ -73,7 +73,7 @@ class PostComponent extends BaseLayout {
 			if (result.success) {
 				const newComment = result.response;
 				newComment.author = this.userService.getCurrentUser();
-				this.store.dispatch(ADD_NEW_COMMENT(postId, result.response));
+				this.store.dispatch(ADD_NEW_COMMENT(postId, newComment));
 				this.store.dispatch(INCREMENT_COMMENTS_AMOUNT(postId));
 			}
 		});
