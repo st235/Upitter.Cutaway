@@ -67,8 +67,6 @@ class TapeComponent extends BaseLayout {
 		let hasMore = false;
 
 		if (posts.size < postsCount) hasMore = true;
-		if (postsCount === null) hasMore = true;
-
 		if (this.invoked) hasMore = false;
 
 		return (
