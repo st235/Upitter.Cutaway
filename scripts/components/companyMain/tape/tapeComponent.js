@@ -25,10 +25,15 @@ class TapeComponent extends BaseLayout {
 	generatePosts() {
 		let { posts } = this.store.getState();
 
-		posts = posts.toArray().sort((first, second) => new Date(first.createdDate) < new Date(second.createdDate));
+		posts = posts.toArray().sort((first, second) => {
+			return new Date(first.createdDate) < new Date(second.createdDate);
+		});
 
 		if (!posts.length) return [];
-		return posts.map(post => <Post key={ post.customId } post={ new Map(post) } />);
+
+		return posts.map(post => {
+			return <Post key={ post.customId } post={ new Map(post) } />;
+		});
 	}
 
 	loadMore() {
@@ -60,8 +65,8 @@ class TapeComponent extends BaseLayout {
 		if (!company || !company.alias) return null;
 
 		let hasMore = false;
-
 		if (posts.size < postsCount) hasMore = true;
+		if (postsCount === null) hasMore = true;
 		if (this.invoked) hasMore = false;
 
 		return (
